@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v3.1.2),
-    on April 10, 2020, at 16:20
+    on April 10, 2020, at 16:10
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -44,7 +44,7 @@ filename = _thisDir + os.sep + u'data/%s_%s_%s' % (expInfo['participant'], expNa
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath='E:\\Github\\Online_Avatar\\Experiment\\simpleIdea_lastrun.py',
+    originPath='E:\\Github\\Online_Avatar\\Experiment\\simpleIdea.py',
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 # save a log file for detail verbose info
@@ -89,7 +89,7 @@ Screen_width = 1200
 Trial_time = 120 # this is specified in frames for now
 
 # avatar setup 
-avatar_speed = 3
+avatar_speed = 3.5
 avatar_y_offset = 100
 box_size = 50
 box_truck   = [1,-1,-1]
@@ -385,17 +385,6 @@ for thisDecisionTrialLoop in DecisionTrialLoop:
     left_target = -delta_thisT
     right_target = delta_thisT
     
-    # set the delay on each trial so pariticpants can't predict 
-    # when to respond
-    delay = round((random() * 100)) + 20
-    
-    # Tried to append another trial given some condition
-    # Might not be able to do that too easily... 
-    if delta_thisT == 200:
-        deltas.append(200)
-        num_trials += 1
-    print(deltas)
-    print(num_trials)
     
     # setting colours
     left_colour = box_build
@@ -675,7 +664,7 @@ for thisDecisionTrialLoop in DecisionTrialLoop:
             # keyboard checking is just starting
             win.callOnFlip(DrivingKeys.clock.reset)  # t=0 on next screen flip
             DrivingKeys.clearEvents(eventType='keyboard')
-        if DrivingKeys.status == STARTED and frameN >= Trial_time + delay:
+        if DrivingKeys.status == STARTED and frameN >= Trial_time + 20:
             # keep track of stop time/frame for later
             DrivingKeys.tStop = t  # not accounting for scr refresh
             DrivingKeys.frameNStop = frameN  # exact frame index
@@ -699,7 +688,7 @@ for thisDecisionTrialLoop in DecisionTrialLoop:
             text.frameNStart = frameN  # exact frame index
             win.timeOnFlip(text, 'tStartRefresh')  # time at next scr refresh
             text.setAutoDraw(True)
-        if text.status == STARTED and frameN >= delay:
+        if text.status == STARTED and frameN >= 20:
             # keep track of stop time/frame for later
             text.tStop = t  # not accounting for scr refresh
             text.frameNStop = frameN  # exact frame index
@@ -707,13 +696,13 @@ for thisDecisionTrialLoop in DecisionTrialLoop:
             text.setAutoDraw(False)
         
         # *text_2* updates
-        if frameN >= delay and text_2.status == NOT_STARTED:
+        if frameN >= 20 and text_2.status == NOT_STARTED:
             # keep track of start time/frame for later
             text_2.tStart = t  # not accounting for scr refresh
             text_2.frameNStart = frameN  # exact frame index
             win.timeOnFlip(text_2, 'tStartRefresh')  # time at next scr refresh
             text_2.setAutoDraw(True)
-        if text_2.status == STARTED and frameN >= Trial_time + delay:
+        if text_2.status == STARTED and frameN >= Trial_time + 20:
             # keep track of stop time/frame for later
             text_2.tStop = t  # not accounting for scr refresh
             text_2.frameNStop = frameN  # exact frame index
@@ -727,7 +716,7 @@ for thisDecisionTrialLoop in DecisionTrialLoop:
             DrivingBoundary.frameNStart = frameN  # exact frame index
             win.timeOnFlip(DrivingBoundary, 'tStartRefresh')  # time at next scr refresh
             DrivingBoundary.setAutoDraw(True)
-        if DrivingBoundary.status == STARTED and frameN >= Trial_time + delay:
+        if DrivingBoundary.status == STARTED and frameN >= Trial_time + 20:
             # keep track of stop time/frame for later
             DrivingBoundary.tStop = t  # not accounting for scr refresh
             DrivingBoundary.frameNStop = frameN  # exact frame index
@@ -737,7 +726,7 @@ for thisDecisionTrialLoop in DecisionTrialLoop:
             DrivingBoundary.setSize((Screen_width, box_size + 10), log=False)
         # add to frame count and check whether to change colour
         frame += 1
-        if frame >= delay:
+        if frame >= 20:
             if target == "left":
                 left_colour = box_burning
             elif target == "right":
@@ -783,7 +772,7 @@ for thisDecisionTrialLoop in DecisionTrialLoop:
             AvatarPlaced.frameNStart = frameN  # exact frame index
             win.timeOnFlip(AvatarPlaced, 'tStartRefresh')  # time at next scr refresh
             AvatarPlaced.setAutoDraw(True)
-        if AvatarPlaced.status == STARTED and frameN >= Trial_time + delay:
+        if AvatarPlaced.status == STARTED and frameN >= Trial_time + 20:
             # keep track of stop time/frame for later
             AvatarPlaced.tStop = t  # not accounting for scr refresh
             AvatarPlaced.frameNStop = frameN  # exact frame index
@@ -802,7 +791,7 @@ for thisDecisionTrialLoop in DecisionTrialLoop:
             AvatarDrive.frameNStart = frameN  # exact frame index
             win.timeOnFlip(AvatarDrive, 'tStartRefresh')  # time at next scr refresh
             AvatarDrive.setAutoDraw(True)
-        if AvatarDrive.status == STARTED and frameN >= Trial_time + delay:
+        if AvatarDrive.status == STARTED and frameN >= Trial_time + 20:
             # keep track of stop time/frame for later
             AvatarDrive.tStop = t  # not accounting for scr refresh
             AvatarDrive.frameNStop = frameN  # exact frame index
@@ -821,7 +810,7 @@ for thisDecisionTrialLoop in DecisionTrialLoop:
             LeftBuild.frameNStart = frameN  # exact frame index
             win.timeOnFlip(LeftBuild, 'tStartRefresh')  # time at next scr refresh
             LeftBuild.setAutoDraw(True)
-        if LeftBuild.status == STARTED and frameN >= Trial_time + delay:
+        if LeftBuild.status == STARTED and frameN >= Trial_time + 20:
             # keep track of stop time/frame for later
             LeftBuild.tStop = t  # not accounting for scr refresh
             LeftBuild.frameNStop = frameN  # exact frame index
@@ -840,7 +829,7 @@ for thisDecisionTrialLoop in DecisionTrialLoop:
             RightBuild.frameNStart = frameN  # exact frame index
             win.timeOnFlip(RightBuild, 'tStartRefresh')  # time at next scr refresh
             RightBuild.setAutoDraw(True)
-        if RightBuild.status == STARTED and frameN >= Trial_time + delay:
+        if RightBuild.status == STARTED and frameN >= Trial_time + 20:
             # keep track of stop time/frame for later
             RightBuild.tStop = t  # not accounting for scr refresh
             RightBuild.frameNStop = frameN  # exact frame index
@@ -859,7 +848,7 @@ for thisDecisionTrialLoop in DecisionTrialLoop:
             TestCheck.frameNStart = frameN  # exact frame index
             win.timeOnFlip(TestCheck, 'tStartRefresh')  # time at next scr refresh
             TestCheck.setAutoDraw(True)
-        if TestCheck.status == STARTED and frameN >= Trial_time + delay:
+        if TestCheck.status == STARTED and frameN >= Trial_time + 20:
             # keep track of stop time/frame for later
             TestCheck.tStop = t  # not accounting for scr refresh
             TestCheck.frameNStop = frameN  # exact frame index
