@@ -1,0 +1,151 @@
+9.5187 	EXP 	Created window1 = Window(allowGUI=True, allowStencil=False, args=UNKNOWN, autoLog=True, bitsMode=UNKNOWN, blendMode='avg', color=array([0., 0., 0.]), colorSpace='rgb', fullscr=<method-wrapper '__getattribute__' of attributeSetter object at 0x000001ED18A0E470>, gamma=None, kwargs=UNKNOWN, lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x000001ED18A3C2B0>, multiSample=False, name='window1', numSamples=2, pos=[360.0, 240.0], screen=0, size=array([1200,  600]), stereo=False, units='pix', useFBO=True, useRetina=False, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+9.5188 	EXP 	window1: recordFrameIntervals = False
+9.6805 	EXP 	window1: recordFrameIntervals = True
+9.8639 	EXP 	window1: recordFrameIntervals = False
+10.5813 	EXP 	Created WelcomeText = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=0.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=25, italic=False, languageStyle='LTR', name='WelcomeText', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=array([255., 255., 255.]), text=str(...), units='pix', win=Window(...), wrapWidth=500)
+10.5976 	EXP 	Created PlacementArea = Rect(__class__=<class 'psychopy.visual.rect.Rect'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace=None, contrast=1.0, depth=0.0, fillColor=array([0., 0., 0.]), fillColorSpace='rgb', fillRGB=array([0., 0., 0.]), interpolate=True, lineColor=array([-1., -1., -1.]), lineColorSpace='rgb', lineRGB=array([-1., -1., -1.]), lineWidth=1, name='PlacementArea', opacity=1.0, ori=array(0.), pos=array([  0., 100.]), size=array([1., 1.]), units='pix', vertices=ndarray(...), win=Window(...))
+10.6089 	EXP 	Created leftTarget = Rect(__class__=<class 'psychopy.visual.rect.Rect'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace=None, contrast=1.0, depth=-2.0, fillColor=array([1., 1., 1.]), fillColorSpace='rgb', fillRGB=array([1., 1., 1.]), interpolate=True, lineColor=array([1., 1., 1.]), lineColorSpace='rgb', lineRGB=array([1., 1., 1.]), lineWidth=1, name='leftTarget', opacity=1.0, ori=array(0.), pos=array([0., 0.]), size=array([1., 1.]), units='pix', vertices=ndarray(...), win=Window(...))
+10.6103 	EXP 	Created rightTarget = Rect(__class__=<class 'psychopy.visual.rect.Rect'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace=None, contrast=1.0, depth=-3.0, fillColor=array([1., 1., 1.]), fillColorSpace='rgb', fillRGB=array([1., 1., 1.]), interpolate=True, lineColor=array([1., 1., 1.]), lineColorSpace='rgb', lineRGB=array([1., 1., 1.]), lineWidth=1, name='rightTarget', opacity=1.0, ori=array(0.), pos=array([0., 0.]), size=array([1., 1.]), units='pix', vertices=ndarray(...), win=Window(...))
+10.6117 	EXP 	Created AvatarPlace = Rect(__class__=<class 'psychopy.visual.rect.Rect'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace=None, contrast=1.0, depth=-5.0, fillColor=array([1., 1., 1.]), fillColorSpace='rgb', fillRGB=array([1., 1., 1.]), interpolate=True, lineColor=array([1., 1., 1.]), lineColorSpace='rgb', lineRGB=array([1., 1., 1.]), lineWidth=1, name='AvatarPlace', opacity=1.0, ori=array(0.), pos=array([0., 0.]), size=array([1., 1.]), units='pix', vertices=ndarray(...), win=Window(...))
+10.6273 	EXP 	Created text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz='center', alignVert='center', antialias=True, autoLog=True, bold=False, color='white', colorSpace='named', contrast=1.0, depth=-1.0, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=20, italic=False, languageStyle='LTR', name='text', opacity=1.0, ori=0, pos=array([0., 0.]), rgb=array([255., 255., 255.]), text='We are driving', units='pix', win=Window(...), wrapWidth=500)
+10.6287 	EXP 	Created DrivingBoundary = Rect(__class__=<class 'psychopy.visual.rect.Rect'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace=None, contrast=1.0, depth=-2.0, fillColor=array([0., 0., 0.]), fillColorSpace='rgb', fillRGB=array([0., 0., 0.]), interpolate=True, lineColor=array([-1., -1., -1.]), lineColorSpace='rgb', lineRGB=array([-1., -1., -1.]), lineWidth=1, name='DrivingBoundary', opacity=1.0, ori=array(0.), pos=array([  0., 100.]), size=array([1., 1.]), units='pix', vertices=ndarray(...), win=Window(...))
+10.6301 	EXP 	Created AvatarPlaced = Rect(__class__=<class 'psychopy.visual.rect.Rect'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace=None, contrast=1.0, depth=-4.0, fillColor=array([1., 1., 1.]), fillColorSpace='rgb', fillRGB=array([1., 1., 1.]), interpolate=True, lineColor=array([1., 1., 1.]), lineColorSpace='rgb', lineRGB=array([1., 1., 1.]), lineWidth=1, name='AvatarPlaced', opacity=1.0, ori=array(0.), pos=array([0., 0.]), size=array([1., 1.]), units='pix', vertices=ndarray(...), win=Window(...))
+10.6316 	EXP 	Created AvatarDrive = Rect(__class__=<class 'psychopy.visual.rect.Rect'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace=None, contrast=1.0, depth=-5.0, fillColor=array([1., 1., 1.]), fillColorSpace='rgb', fillRGB=array([1., 1., 1.]), interpolate=True, lineColor=array([1., 1., 1.]), lineColorSpace='rgb', lineRGB=array([1., 1., 1.]), lineWidth=1, name='AvatarDrive', opacity=1.0, ori=array(0.), pos=array([0., 0.]), size=array([1., 1.]), units='pix', vertices=ndarray(...), win=Window(...))
+10.6330 	EXP 	Created LeftBuild = Rect(__class__=<class 'psychopy.visual.rect.Rect'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace=None, contrast=1.0, depth=-6.0, fillColor=array([1., 1., 1.]), fillColorSpace='rgb', fillRGB=array([1., 1., 1.]), interpolate=True, lineColor=array([1., 1., 1.]), lineColorSpace='rgb', lineRGB=array([1., 1., 1.]), lineWidth=1, name='LeftBuild', opacity=1.0, ori=array(0.), pos=array([0., 0.]), size=array([1., 1.]), units='pix', vertices=ndarray(...), win=Window(...))
+10.6344 	EXP 	Created RightBuild = Rect(__class__=<class 'psychopy.visual.rect.Rect'>, autoDraw=False, autoLog=True, closeShape=True, color=method-wrapper(...), colorSpace=None, contrast=1.0, depth=-7.0, fillColor=array([1., 1., 1.]), fillColorSpace='rgb', fillRGB=array([1., 1., 1.]), interpolate=True, lineColor=array([1., 1., 1.]), lineColorSpace='rgb', lineRGB=array([1., 1., 1.]), lineWidth=1, name='RightBuild', opacity=1.0, ori=array(0.), pos=array([0., 0.]), size=array([1., 1.]), units='pix', vertices=ndarray(...), win=Window(...))
+10.7652 	EXP 	WelcomeText: autoDraw = True
+11.4313 	EXP 	Created sequence: random, trialTypes=1, nReps=4, seed=None
+11.4316 	EXP 	New trial (rep=0, index=0): None
+11.4338 	DATA 	Keypress: space
+11.4710 	EXP 	WelcomeText: autoDraw = False
+11.4710 	EXP 	PlacementArea: autoDraw = True
+11.4710 	EXP 	leftTarget: autoDraw = True
+11.4710 	EXP 	rightTarget: autoDraw = True
+11.4710 	EXP 	AvatarPlace: autoDraw = True
+11.9474 	DATA 	Mouse: Left button down, pos=(631,427)
+12.0307 	DATA 	Mouse:  Left button up, pos=(631,427)
+12.5318 	DATA 	Mouse: Left button down, pos=(579,427)
+12.5808 	DATA 	Mouse:  Left button up, pos=(579,427)
+13.0640 	DATA 	Keypress: space
+13.1096 	EXP 	PlacementArea: autoDraw = False
+13.1096 	EXP 	leftTarget: autoDraw = False
+13.1096 	EXP 	rightTarget: autoDraw = False
+13.1096 	EXP 	AvatarPlace: autoDraw = False
+13.1096 	EXP 	text: autoDraw = True
+13.1096 	EXP 	DrivingBoundary: autoDraw = True
+13.1096 	EXP 	AvatarPlaced: autoDraw = True
+13.1096 	EXP 	AvatarDrive: autoDraw = True
+13.1096 	EXP 	LeftBuild: autoDraw = True
+13.1096 	EXP 	RightBuild: autoDraw = True
+13.3739 	DATA 	Keypress: down
+14.1915 	DATA 	Keypress: left
+15.0847 	EXP 	New trial (rep=1, index=0): None
+15.0970 	EXP 	text: autoDraw = False
+15.0970 	EXP 	DrivingBoundary: autoDraw = False
+15.0970 	EXP 	AvatarPlaced: autoDraw = False
+15.0970 	EXP 	AvatarDrive: autoDraw = False
+15.0970 	EXP 	LeftBuild: autoDraw = False
+15.0970 	EXP 	RightBuild: autoDraw = False
+15.0970 	EXP 	text: autoDraw = False
+15.0970 	EXP 	DrivingBoundary: autoDraw = False
+15.0970 	EXP 	AvatarPlaced: autoDraw = False
+15.0970 	EXP 	AvatarDrive: autoDraw = False
+15.0970 	EXP 	LeftBuild: autoDraw = False
+15.0970 	EXP 	RightBuild: autoDraw = False
+15.0970 	EXP 	PlacementArea: autoDraw = True
+15.0970 	EXP 	leftTarget: autoDraw = True
+15.0970 	EXP 	rightTarget: autoDraw = True
+15.0970 	EXP 	AvatarPlace: autoDraw = True
+16.2477 	DATA 	Mouse: Left button down, pos=(553,414)
+16.3026 	DATA 	Mouse:  Left button up, pos=(553,414)
+16.5146 	DATA 	Keypress: space
+16.5321 	EXP 	PlacementArea: autoDraw = False
+16.5321 	EXP 	leftTarget: autoDraw = False
+16.5321 	EXP 	rightTarget: autoDraw = False
+16.5321 	EXP 	AvatarPlace: autoDraw = False
+16.5321 	EXP 	text: autoDraw = True
+16.5321 	EXP 	DrivingBoundary: autoDraw = True
+16.5321 	EXP 	AvatarPlaced: autoDraw = True
+16.5321 	EXP 	AvatarDrive: autoDraw = True
+16.5321 	EXP 	LeftBuild: autoDraw = True
+16.5321 	EXP 	RightBuild: autoDraw = True
+16.7861 	DATA 	Keypress: down
+17.5194 	DATA 	Keypress: left
+18.5169 	EXP 	New trial (rep=2, index=0): None
+18.5304 	EXP 	text: autoDraw = False
+18.5304 	EXP 	DrivingBoundary: autoDraw = False
+18.5304 	EXP 	AvatarPlaced: autoDraw = False
+18.5304 	EXP 	AvatarDrive: autoDraw = False
+18.5304 	EXP 	LeftBuild: autoDraw = False
+18.5304 	EXP 	RightBuild: autoDraw = False
+18.5304 	EXP 	text: autoDraw = False
+18.5304 	EXP 	DrivingBoundary: autoDraw = False
+18.5304 	EXP 	AvatarPlaced: autoDraw = False
+18.5304 	EXP 	AvatarDrive: autoDraw = False
+18.5304 	EXP 	LeftBuild: autoDraw = False
+18.5304 	EXP 	RightBuild: autoDraw = False
+18.5304 	EXP 	PlacementArea: autoDraw = True
+18.5304 	EXP 	leftTarget: autoDraw = True
+18.5304 	EXP 	rightTarget: autoDraw = True
+18.5304 	EXP 	AvatarPlace: autoDraw = True
+19.6025 	DATA 	Mouse: Left button down, pos=(550,416)
+19.7143 	DATA 	Mouse:  Left button up, pos=(559,418)
+19.9310 	DATA 	Keypress: space
+19.9479 	EXP 	PlacementArea: autoDraw = False
+19.9479 	EXP 	leftTarget: autoDraw = False
+19.9479 	EXP 	rightTarget: autoDraw = False
+19.9479 	EXP 	AvatarPlace: autoDraw = False
+19.9479 	EXP 	text: autoDraw = True
+19.9479 	EXP 	DrivingBoundary: autoDraw = True
+19.9479 	EXP 	AvatarPlaced: autoDraw = True
+19.9479 	EXP 	AvatarDrive: autoDraw = True
+19.9479 	EXP 	LeftBuild: autoDraw = True
+19.9479 	EXP 	RightBuild: autoDraw = True
+20.2042 	DATA 	Keypress: down
+21.0526 	DATA 	Keypress: left
+21.9350 	EXP 	New trial (rep=3, index=0): None
+21.9470 	EXP 	text: autoDraw = False
+21.9470 	EXP 	DrivingBoundary: autoDraw = False
+21.9470 	EXP 	AvatarPlaced: autoDraw = False
+21.9470 	EXP 	AvatarDrive: autoDraw = False
+21.9470 	EXP 	LeftBuild: autoDraw = False
+21.9470 	EXP 	RightBuild: autoDraw = False
+21.9470 	EXP 	text: autoDraw = False
+21.9470 	EXP 	DrivingBoundary: autoDraw = False
+21.9470 	EXP 	AvatarPlaced: autoDraw = False
+21.9470 	EXP 	AvatarDrive: autoDraw = False
+21.9470 	EXP 	LeftBuild: autoDraw = False
+21.9470 	EXP 	RightBuild: autoDraw = False
+21.9470 	EXP 	PlacementArea: autoDraw = True
+21.9470 	EXP 	leftTarget: autoDraw = True
+21.9470 	EXP 	rightTarget: autoDraw = True
+21.9470 	EXP 	AvatarPlace: autoDraw = True
+22.6485 	DATA 	Mouse: Left button down, pos=(564,421)
+22.7471 	DATA 	Mouse:  Left button up, pos=(564,421)
+22.8806 	DATA 	Keypress: space
+22.8971 	EXP 	PlacementArea: autoDraw = False
+22.8971 	EXP 	leftTarget: autoDraw = False
+22.8971 	EXP 	rightTarget: autoDraw = False
+22.8971 	EXP 	AvatarPlace: autoDraw = False
+22.8971 	EXP 	text: autoDraw = True
+22.8971 	EXP 	DrivingBoundary: autoDraw = True
+22.8971 	EXP 	AvatarPlaced: autoDraw = True
+22.8971 	EXP 	AvatarDrive: autoDraw = True
+22.8971 	EXP 	LeftBuild: autoDraw = True
+22.8971 	EXP 	RightBuild: autoDraw = True
+23.1216 	DATA 	Keypress: left
+23.1374 	DATA 	Keypress: down
+23.7527 	DATA 	Keypress: left
+24.8967 	EXP 	text: autoDraw = False
+24.8967 	EXP 	DrivingBoundary: autoDraw = False
+24.8967 	EXP 	AvatarPlaced: autoDraw = False
+24.8967 	EXP 	AvatarDrive: autoDraw = False
+24.8967 	EXP 	LeftBuild: autoDraw = False
+24.8967 	EXP 	RightBuild: autoDraw = False
+24.8967 	EXP 	text: autoDraw = False
+24.8967 	EXP 	DrivingBoundary: autoDraw = False
+24.8967 	EXP 	AvatarPlaced: autoDraw = False
+24.8967 	EXP 	AvatarDrive: autoDraw = False
+24.8967 	EXP 	LeftBuild: autoDraw = False
+24.8967 	EXP 	RightBuild: autoDraw = False
+25.1029 	EXP 	window1: mouseVisible = True
