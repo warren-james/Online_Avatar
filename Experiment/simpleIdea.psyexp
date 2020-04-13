@@ -30,9 +30,9 @@
     <Param name="logging level" updates="None" val="exp" valType="code"/>
   </Settings>
   <Routines>
-    <Routine name="InitExperiment">
+    <Routine name="routine_1_InitExperiment">
       <CodeComponent name="InitCode">
-        <Param name="Begin Experiment" updates="constant" val="# get packages we might need &amp;#10;# import random&amp;#10;&amp;#10;# Experiment running conditions&amp;#10;deltas = [200, 300, 400, 500]&amp;#10;num_trials = 4&amp;#10;&amp;#10;# Screen settings &amp;#10;Screen_height = 600&amp;#10;Screen_width = 1200&amp;#10;&amp;#10;# Trial conditions &amp;#10;Trial_time = 120 # this is specified in frames for now&amp;#10;&amp;#10;# avatar setup &amp;#10;avatar_speed = 3&amp;#10;avatar_y_offset = 100&amp;#10;box_size = 50&amp;#10;box_truck   = [1,-1,-1]&amp;#10;box_placed  = [.5,-.5,-.5]&amp;#10;box_build   = [.09, -.45,-.85]&amp;#10;box_burning = [.64, -.17, -.76]&amp;#10;box_burnt   = [-.9, -.9, -.9]&amp;#10;&amp;#10;&amp;#10;&amp;#10;&amp;#10;" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="# get packages we might need &amp;#10;# import random&amp;#10;&amp;#10;# Experiment running conditions&amp;#10;deltas = [200, 300, 400, 500]&amp;#10;num_trials = 4&amp;#10;&amp;#10;# Screen settings &amp;#10;Screen_height = 600&amp;#10;Screen_width = 1200&amp;#10;&amp;#10;# Trial conditions &amp;#10;Trial_time = 120 # this is specified in frames for now&amp;#10;&amp;#10;# avatar setup &amp;#10;avatar_speed = 3&amp;#10;avatar_y_offset = 100&amp;#10;box_size = 50&amp;#10;box_truck   = [1,-1,-1]&amp;#10;box_placed  = [.5,-.5,-.5]&amp;#10;box_build   = [.09, -.45,-.85]&amp;#10;box_burning = [.64, -.17, -.76]&amp;#10;box_burnt   = [-.9, -.9, -.9]&amp;#10;&amp;#10;# Control Arrows&amp;#10;Arrow_size = 30&amp;#10;Arrow_orient = [0,180,270,90]&amp;#10;Arrow_y = [-150,-220,-185,-185]&amp;#10;Arrow_x = [0, 0, -35, 35]&amp;#10;&amp;#10;&amp;#10;&amp;#10;&amp;#10;" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
@@ -47,7 +47,7 @@
         <Param name="name" updates="None" val="InitCode" valType="code"/>
       </CodeComponent>
     </Routine>
-    <Routine name="WelcomeScreen">
+    <Routine name="routine_2_WelcomeScreen">
       <TextComponent name="WelcomeText">
         <Param name="color" updates="constant" val="white" valType="str"/>
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
@@ -91,7 +91,92 @@
         <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
       </KeyboardComponent>
     </Routine>
-    <Routine name="PlaceAvatarInit">
+    <Routine name="routine_3_Demonstration">
+      <TextComponent name="DemoText">
+        <Param name="color" updates="constant" val="white" valType="str"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="flip" updates="constant" val="" valType="str"/>
+        <Param name="font" updates="constant" val="Arial" valType="str"/>
+        <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
+        <Param name="letterHeight" updates="constant" val="20" valType="code"/>
+        <Param name="name" updates="None" val="DemoText" valType="code"/>
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="1.0" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="text" updates="constant" val="Temp text&amp;#10;" valType="str"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="wrapWidth" updates="constant" val="" valType="code"/>
+      </TextComponent>
+    </Routine>
+    <Routine name="routine_4_Trial_Instructions">
+      <TextComponent name="TrialInst">
+        <Param name="color" updates="constant" val="white" valType="str"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="flip" updates="constant" val="" valType="str"/>
+        <Param name="font" updates="constant" val="Arial" valType="str"/>
+        <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
+        <Param name="letterHeight" updates="constant" val="20" valType="code"/>
+        <Param name="name" updates="None" val="TrialInst" valType="code"/>
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="text" updates="constant" val="You will place the 'truck' by clicing between the two lines on screen.&amp;#10;Once you are happy with the placement, press the spacebar to begin the trial.&amp;#10;After a short amount of time, one of the two buidlings will catch fire,&amp;#10;at which point you are to drive the truck towards this buidling.&amp;#10;&amp;#10;Press the spacebar to continue" valType="str"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="wrapWidth" updates="constant" val="" valType="code"/>
+      </TextComponent>
+      <KeyboardComponent name="InstSkip">
+        <Param name="allowedKeys" updates="constant" val="'space'" valType="code"/>
+        <Param name="correctAns" updates="constant" val="" valType="str"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="discard previous" updates="constant" val="True" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="forceEndRoutine" updates="constant" val="True" valType="bool"/>
+        <Param name="name" updates="None" val="InstSkip" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="1" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="stopVal" updates="constant" val="" valType="code"/>
+        <Param name="store" updates="constant" val="last key" valType="str"/>
+        <Param name="storeCorrect" updates="constant" val="False" valType="bool"/>
+        <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
+      </KeyboardComponent>
+      <CodeComponent name="ResetTrials">
+        <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="trial_num = 0" valType="extendedCode"/>
+        <Param name="Code Type" updates="None" val="Py" valType="str"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="name" updates="None" val="ResetTrials" valType="code"/>
+      </CodeComponent>
+    </Routine>
+    <Routine name="routine_5a_PlaceAvatarInit">
       <CodeComponent name="PlaceInit">
         <Param name="Begin Experiment" updates="constant" val="trial_num = 0" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
@@ -108,7 +193,7 @@
         <Param name="name" updates="None" val="PlaceInit" valType="code"/>
       </CodeComponent>
     </Routine>
-    <Routine name="PlacingAvatar">
+    <Routine name="routine_5b_PlacingAvatar">
       <PolygonComponent name="PlacementArea">
         <Param name="disabled" updates="None" val="False" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
@@ -261,7 +346,25 @@
         <Param name="name" updates="None" val="code" valType="code"/>
       </CodeComponent>
     </Routine>
-    <Routine name="DrivingAvatar">
+    <Routine name="routine_5c_DrivingAvatar">
+      <MouseComponent name="DrivingMouse">
+        <Param name="clickable" updates="constant" val="upShape, downShape, rightShape, leftShape" valType="code"/>
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="forceEndRoutineOnPress" updates="constant" val="never" valType="str"/>
+        <Param name="name" updates="None" val="DrivingMouse" valType="code"/>
+        <Param name="newClicksOnly" updates="constant" val="True" valType="bool"/>
+        <Param name="saveMouseState" updates="None" val="every frame" valType="str"/>
+        <Param name="saveParamsClickable" updates="constant" val="name," valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="frame N" valType="str"/>
+        <Param name="startVal" updates="None" val="delay" valType="code"/>
+        <Param name="stopType" updates="None" val="frame N" valType="str"/>
+        <Param name="stopVal" updates="constant" val="$Trial_time + delay" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="False" valType="bool"/>
+        <Param name="timeRelativeTo" updates="constant" val="mouse onset" valType="str"/>
+      </MouseComponent>
       <KeyboardComponent name="DrivingKeys">
         <Param name="allowedKeys" updates="constant" val="'up','down','right','left'" valType="code"/>
         <Param name="correctAns" updates="constant" val="" valType="str"/>
@@ -273,7 +376,7 @@
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="frame N" valType="str"/>
-        <Param name="startVal" updates="None" val="20" valType="code"/>
+        <Param name="startVal" updates="None" val="delay" valType="code"/>
         <Param name="stopType" updates="None" val="frame N" valType="str"/>
         <Param name="stopVal" updates="constant" val="$Trial_time + delay" valType="code"/>
         <Param name="store" updates="constant" val="last key" valType="str"/>
@@ -357,14 +460,14 @@
         <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="AvatarDrive_x = Avatar_x&amp;#10;AvatarDrive_y = Avatar_y&amp;#10;&amp;#10;# frame counter &amp;#10;frame = 0" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="AvatarDrive_x = Avatar_x&amp;#10;AvatarDrive_y = Avatar_y&amp;#10;&amp;#10;# put mouse to arrow part &amp;#10;DrivingMouse.setPos(newPos =(0, Arrow_y[2]))&amp;#10;&amp;#10;# frame counter &amp;#10;frame = 0&amp;#10;&amp;#10;state = &quot;null&quot;" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Py" valType="str"/>
-        <Param name="Each Frame" updates="constant" val="# add to frame count and check whether to change colour&amp;#10;frame += 1&amp;#10;if frame &gt;= delay:&amp;#10;    if target == &quot;left&quot;:&amp;#10;        left_colour = box_burning&amp;#10;    elif target == &quot;right&quot;:&amp;#10;        right_colour = box_burning&amp;#10;&amp;#10;&amp;#10;key_pressed = DrivingKeys.keys&amp;#10;&amp;#10;# Works by allowing people to set the direction of travel and the&amp;#10;# avatar will drive in that direction until another key is pressed &amp;#10;# NB: needs to only store the last key press&amp;#10;if key_pressed == 'up': &amp;#10;    AvatarDrive_y += avatar_speed&amp;#10;elif key_pressed == 'down':&amp;#10;    AvatarDrive_y -= avatar_speed&amp;#10;elif key_pressed == 'right':&amp;#10;    AvatarDrive_x += avatar_speed&amp;#10;elif key_pressed == 'left':&amp;#10;    AvatarDrive_x -= avatar_speed&amp;#10;&amp;#10;# This works if we want to make participants tap their keyboard&amp;#10;# NB: must be paired with storing all keys&amp;#10;#if len(key_pressed) &gt; 0:&amp;#10;#    if key_pressed[-1] == 'up': &amp;#10;#        AvatarDrive_y += avatar_speed&amp;#10;#        key_pressed.pop()&amp;#10;#    elif key_pressed[-1] == 'down':&amp;#10;#        AvatarDrive_y -= avatar_speed&amp;#10;#        DrivingKeys.keys.pop()&amp;#10;#    elif key_pressed[-1] == 'right':&amp;#10;#        AvatarDrive_x += avatar_speed&amp;#10;#        DrivingKeys.keys.pop()&amp;#10;#    elif key_pressed[-1] == 'left':&amp;#10;#        AvatarDrive_x -= avatar_speed&amp;#10;#        DrivingKeys.keys.pop()&amp;#10;&amp;#10;" valType="extendedCode"/>
+        <Param name="Each Frame" updates="constant" val="# add to frame count and check whether to change colour&amp;#10;frame += 1&amp;#10;if frame &gt;= delay:&amp;#10;    if target == &quot;left&quot;:&amp;#10;        left_colour = box_burning&amp;#10;    elif target == &quot;right&quot;:&amp;#10;        right_colour = box_burning&amp;#10;&amp;#10;&amp;#10;key_pressed = DrivingKeys.keys&amp;#10;# status just checks if we're listening to the keyboard&amp;#10;state = 1&amp;#10;&amp;#10;# try driving with the mouse &amp;#10;if DrivingMouse.isPressedIn(upShape):&amp;#10;    AvatarDrive_y += avatar_speed&amp;#10;elif DrivingMouse.isPressedIn(downShape):&amp;#10;    AvatarDrive_y -= avatar_speed&amp;#10;elif DrivingMouse.isPressedIn(rightShape):&amp;#10;    AvatarDrive_x += avatar_speed&amp;#10;elif DrivingMouse.isPressedIn(leftShape):&amp;#10;    AvatarDrive_x -= avatar_speed&amp;#10;&amp;#10;# Works by allowing people to set the direction of travel and the&amp;#10;# avatar will drive in that direction until another key is pressed &amp;#10;# NB: needs to only store the last key press&amp;#10;#if key_pressed == 'up': &amp;#10;#    AvatarDrive_y += avatar_speed&amp;#10;#elif key_pressed == 'down':&amp;#10;#    AvatarDrive_y -= avatar_speed&amp;#10;#elif key_pressed == 'right':&amp;#10;#    AvatarDrive_x += avatar_speed&amp;#10;#elif key_pressed == 'left':&amp;#10;#    AvatarDrive_x -= avatar_speed&amp;#10;&amp;#10;# This works if we want to make participants tap their keyboard&amp;#10;# NB: must be paired with storing all keys&amp;#10;#if len(key_pressed) &gt; 0:&amp;#10;#    if key_pressed[-1] == 'up': &amp;#10;#        AvatarDrive_y += avatar_speed&amp;#10;#        key_pressed.pop()&amp;#10;#    elif key_pressed[-1] == 'down':&amp;#10;#        AvatarDrive_y -= avatar_speed&amp;#10;#        DrivingKeys.keys.pop()&amp;#10;#    elif key_pressed[-1] == 'right':&amp;#10;#        AvatarDrive_x += avatar_speed&amp;#10;#        DrivingKeys.keys.pop()&amp;#10;#    elif key_pressed[-1] == 'left':&amp;#10;#        AvatarDrive_x -= avatar_speed&amp;#10;#        DrivingKeys.keys.pop()&amp;#10;&amp;#10;" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="End JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="d = dir(DrivingKeys)&amp;#10;&amp;#10;#print(d)&amp;#10;#print(DrivingKeys.stop)&amp;#10;&amp;#10;#for i in d:&amp;#10;#    print(i + &quot; &quot; + d[i])&amp;#10;&amp;#10;#print(DrivingKeys['status'])" valType="extendedCode"/>
         <Param name="disabled" updates="None" val="False" valType="bool"/>
         <Param name="name" updates="None" val="DrivingCode" valType="code"/>
       </CodeComponent>
@@ -488,15 +591,140 @@
         <Param name="stopType" updates="None" val="frame N" valType="str"/>
         <Param name="stopVal" updates="constant" val="$Trial_time + delay" valType="code"/>
         <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="set every frame" val="$key_pressed&amp;#10;" valType="str"/>
+        <Param name="text" updates="set every frame" val="$state&amp;#10;" valType="str"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="code"/>
       </TextComponent>
+      <PolygonComponent name="upShape">
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="fillColor" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="fillColorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="lineColor" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="lineColorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="lineWidth" updates="constant" val="1" valType="code"/>
+        <Param name="nVertices" updates="constant" val="4" valType="int"/>
+        <Param name="name" updates="None" val="upShape" valType="code"/>
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="ori" updates="set every frame" val="Arrow_orient[0]" valType="code"/>
+        <Param name="pos" updates="set every frame" val="(Arrow_x[0], Arrow_y[0])" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="shape" updates="constant" val="triangle" valType="str"/>
+        <Param name="size" updates="set every frame" val="(Arrow_size, Arrow_size)" valType="code"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="frame N" valType="str"/>
+        <Param name="stopVal" updates="constant" val="$Trial_time + delay" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+      </PolygonComponent>
+      <PolygonComponent name="downShape">
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="fillColor" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="fillColorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="lineColor" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="lineColorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="lineWidth" updates="constant" val="1" valType="code"/>
+        <Param name="nVertices" updates="constant" val="4" valType="int"/>
+        <Param name="name" updates="None" val="downShape" valType="code"/>
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="ori" updates="set every frame" val="Arrow_orient[1]" valType="code"/>
+        <Param name="pos" updates="set every frame" val="(Arrow_x[1], Arrow_y[1])" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="shape" updates="constant" val="triangle" valType="str"/>
+        <Param name="size" updates="set every frame" val="(Arrow_size, Arrow_size)" valType="code"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="frame N" valType="str"/>
+        <Param name="stopVal" updates="constant" val="$Trial_time + delay" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+      </PolygonComponent>
+      <PolygonComponent name="rightShape">
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="fillColor" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="fillColorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="lineColor" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="lineColorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="lineWidth" updates="constant" val="1" valType="code"/>
+        <Param name="nVertices" updates="constant" val="4" valType="int"/>
+        <Param name="name" updates="None" val="rightShape" valType="code"/>
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="ori" updates="set every frame" val="Arrow_orient[3]" valType="code"/>
+        <Param name="pos" updates="set every frame" val="(Arrow_x[3], Arrow_y[3])" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="shape" updates="constant" val="triangle" valType="str"/>
+        <Param name="size" updates="set every frame" val="(Arrow_size, Arrow_size)" valType="code"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="frame N" valType="str"/>
+        <Param name="stopVal" updates="constant" val="$Trial_time + delay" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+      </PolygonComponent>
+      <PolygonComponent name="leftShape">
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="fillColor" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="fillColorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="lineColor" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="lineColorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="lineWidth" updates="constant" val="1" valType="code"/>
+        <Param name="nVertices" updates="constant" val="4" valType="int"/>
+        <Param name="name" updates="None" val="leftShape" valType="code"/>
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="ori" updates="set every frame" val="Arrow_orient[2]" valType="code"/>
+        <Param name="pos" updates="set every frame" val="(Arrow_x[2], Arrow_y[2])" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="shape" updates="constant" val="triangle" valType="str"/>
+        <Param name="size" updates="set every frame" val="(Arrow_size, Arrow_size)" valType="code"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="frame N" valType="str"/>
+        <Param name="stopVal" updates="constant" val="$Trial_time + delay" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+      </PolygonComponent>
     </Routine>
   </Routines>
   <Flow>
-    <Routine name="InitExperiment"/>
-    <Routine name="WelcomeScreen"/>
+    <Routine name="routine_1_InitExperiment"/>
+    <Routine name="routine_2_WelcomeScreen"/>
+    <LoopInitiator loopType="TrialHandler" name="BlockLoop">
+      <Param name="Selected rows" updates="None" val="" valType="str"/>
+      <Param name="conditions" updates="None" val="None" valType="str"/>
+      <Param name="conditionsFile" updates="None" val="" valType="str"/>
+      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
+      <Param name="isTrials" updates="None" val="False" valType="bool"/>
+      <Param name="loopType" updates="None" val="random" valType="str"/>
+      <Param name="nReps" updates="None" val="1" valType="code"/>
+      <Param name="name" updates="None" val="BlockLoop" valType="code"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
+    </LoopInitiator>
+    <LoopInitiator loopType="TrialHandler" name="DemoLoop">
+      <Param name="Selected rows" updates="None" val="" valType="str"/>
+      <Param name="conditions" updates="None" val="None" valType="str"/>
+      <Param name="conditionsFile" updates="None" val="" valType="str"/>
+      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
+      <Param name="isTrials" updates="None" val="True" valType="bool"/>
+      <Param name="loopType" updates="None" val="random" valType="str"/>
+      <Param name="nReps" updates="None" val="1" valType="code"/>
+      <Param name="name" updates="None" val="DemoLoop" valType="code"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
+    </LoopInitiator>
+    <Routine name="routine_3_Demonstration"/>
+    <LoopTerminator name="DemoLoop"/>
+    <Routine name="routine_4_Trial_Instructions"/>
     <LoopInitiator loopType="TrialHandler" name="DecisionTrialLoop">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
       <Param name="conditions" updates="None" val="None" valType="str"/>
@@ -508,9 +736,10 @@
       <Param name="name" updates="None" val="DecisionTrialLoop" valType="code"/>
       <Param name="random seed" updates="None" val="" valType="code"/>
     </LoopInitiator>
-    <Routine name="PlaceAvatarInit"/>
-    <Routine name="PlacingAvatar"/>
-    <Routine name="DrivingAvatar"/>
+    <Routine name="routine_5a_PlaceAvatarInit"/>
+    <Routine name="routine_5b_PlacingAvatar"/>
+    <Routine name="routine_5c_DrivingAvatar"/>
     <LoopTerminator name="DecisionTrialLoop"/>
+    <LoopTerminator name="BlockLoop"/>
   </Flow>
 </PsychoPy2experiment>
