@@ -74,7 +74,10 @@ function updateInfo() {
   
   return Scheduler.Event.NEXT;
 }
-
+var box_size = 50;
+var Screen_width = 1200;
+var Screen_height = 600;
+var num_trials = 5;
 var routine_1_InitExperimentClock;
 var routine_2_WelcomeScreenClock;
 var WelcomeText;

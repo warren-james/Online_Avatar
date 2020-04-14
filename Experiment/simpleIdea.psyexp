@@ -32,10 +32,10 @@
   <Routines>
     <Routine name="routine_1_InitExperiment">
       <CodeComponent name="InitCode">
-        <Param name="Begin Experiment" updates="constant" val="# get packages we might need &amp;#10;# import random&amp;#10;&amp;#10;# Experiment running conditions&amp;#10;deltas = [200, 300, 400, 500, 600]&amp;#10;num_trials = 5&amp;#10;&amp;#10;# Screen settings &amp;#10;Screen_height = 600&amp;#10;Screen_width = 1200&amp;#10;&amp;#10;# Trial conditions &amp;#10;Trial_time = 120 # this is specified in frames for now&amp;#10;&amp;#10;# avatar setup &amp;#10;avatar_speed = 3&amp;#10;avatar_y_offset = 100&amp;#10;avatar_reach = 55&amp;#10;box_size = 50&amp;#10;box_truck   = [1,-1,-1]&amp;#10;box_placed  = [.5,-.5,-.5]&amp;#10;box_build   = [.09, -.45,-.85]&amp;#10;box_burning = [.64, -.17, -.76]&amp;#10;box_burnt   = [-.9, -.9, -.9]&amp;#10;&amp;#10;# Control Arrows&amp;#10;Arrow_init_colour = [1,1,1]&amp;#10;Arrow_clik_colour = [0,0,1]&amp;#10;Arrow_size = 30&amp;#10;Arrow_orient = [0,180,270,90]&amp;#10;Arrow_y = [-150,-220,-185,-185]&amp;#10;Arrow_x = [0, 0, -35, 35]&amp;#10;&amp;#10;&amp;#10;&amp;#10;&amp;#10;" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="# get packages we might need &amp;#10;# import random&amp;#10;&amp;#10;# Experiment running conditions&amp;#10;deltas = [200, 300, 400, 500, 600]&amp;#10;num_reps = 2&amp;#10;num_repsEsts = 1&amp;#10;&amp;#10;delta_order = []&amp;#10;for d in deltas:&amp;#10;    for rep in range(0,num_reps):&amp;#10;        delta_order.append(d)&amp;#10; &amp;#10;# delta_order = shuffle(numpy.repeat(deltas, num_reps))&amp;#10;np.random.shuffle(delta_order)&amp;#10;num_trials = len(delta_order)&amp;#10;print(num_trials)&amp;#10;print(delta_order)&amp;#10;&amp;#10;&amp;#10;# Screen settings &amp;#10;Screen_height = 600&amp;#10;Screen_width = 1200&amp;#10;&amp;#10;# Trial conditions &amp;#10;Trial_time = 120 # this is specified in frames for now&amp;#10;&amp;#10;# avatar setup &amp;#10;avatar_speed = 3&amp;#10;avatar_y_offset = 100&amp;#10;avatar_reach = 30&amp;#10;box_size = 50&amp;#10;box_truck   = [1,-1,-1]&amp;#10;box_placed  = [.5,-.5,-.5]&amp;#10;box_build   = [.09, -.45,-.85]&amp;#10;box_burning = [.64, -.17, -.76]&amp;#10;box_burnt   = [-.9, -.9, -.9]&amp;#10;&amp;#10;# Control Arrows&amp;#10;Arrow_init_colour = [1,1,1]&amp;#10;Arrow_clik_colour = [0,0,1]&amp;#10;Arrow_size = 30&amp;#10;Arrow_orient = [0,180,270,90]&amp;#10;Arrow_y = [-150,-220,-185,-185]&amp;#10;Arrow_x = [0, 0, -35, 35]&amp;#10;&amp;#10;&amp;#10;&amp;#10;&amp;#10;" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="# get packages we might need &amp;#10;# import random&amp;#10;&amp;#10;# Experiment running conditions&amp;#10;#deltas = [200, 300, 400, 500, 600]&amp;#10;#num_trials = 5&amp;#10;&amp;#10;# Screen settings &amp;#10;#Screen_height = 600&amp;#10;#Screen_width = 1200&amp;#10;&amp;#10;# Trial conditions &amp;#10;#Trial_time = 120 # this is specified in frames for now&amp;#10;&amp;#10;# avatar setup &amp;#10;#avatar_speed = 3&amp;#10;#avatar_y_offset = 100&amp;#10;#avatar_reach = 55&amp;#10;#box_size = 50&amp;#10;#box_truck   = [1,-1,-1]&amp;#10;#box_placed  = [.5,-.5,-.5]&amp;#10;#box_build   = [.09, -.45,-.85]&amp;#10;#box_burning = [.64, -.17, -.76]&amp;#10;#box_burnt   = [-.9, -.9, -.9]&amp;#10;&amp;#10;# Control Arrows&amp;#10;#Arrow_init_colour = [1,1,1]&amp;#10;#Arrow_clik_colour = [0,0,1]&amp;#10;#Arrow_size = 30&amp;#10;#Arrow_orient = [0,180,270,90]&amp;#10;#Arrow_y = [-150,-220,-185,-185]&amp;#10;#Arrow_x = [0, 0, -35, 35]&amp;#10;&amp;#10;&amp;#10;&amp;#10;&amp;#10;" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Py" valType="str"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
@@ -91,32 +91,7 @@
         <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
       </KeyboardComponent>
     </Routine>
-    <Routine name="routine_3_Demonstration">
-      <TextComponent name="DemoText">
-        <Param name="color" updates="constant" val="white" valType="str"/>
-        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
-        <Param name="disabled" updates="None" val="False" valType="bool"/>
-        <Param name="durationEstim" updates="None" val="" valType="code"/>
-        <Param name="flip" updates="constant" val="" valType="str"/>
-        <Param name="font" updates="constant" val="Arial" valType="str"/>
-        <Param name="languageStyle" updates="None" val="LTR" valType="str"/>
-        <Param name="letterHeight" updates="constant" val="20" valType="code"/>
-        <Param name="name" updates="None" val="DemoText" valType="code"/>
-        <Param name="opacity" updates="constant" val="1" valType="code"/>
-        <Param name="ori" updates="constant" val="0" valType="code"/>
-        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
-        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
-        <Param name="startEstim" updates="None" val="" valType="code"/>
-        <Param name="startType" updates="None" val="time (s)" valType="str"/>
-        <Param name="startVal" updates="None" val="0.0" valType="code"/>
-        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
-        <Param name="stopVal" updates="constant" val="1.0" valType="code"/>
-        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
-        <Param name="text" updates="constant" val="Temp text&amp;#10;" valType="str"/>
-        <Param name="units" updates="None" val="from exp settings" valType="str"/>
-        <Param name="wrapWidth" updates="constant" val="" valType="code"/>
-      </TextComponent>
-    </Routine>
+    <Routine name="routine_3_Demonstration"/>
     <Routine name="routine_4_Trial_Instructions">
       <TextComponent name="TrialInst">
         <Param name="color" updates="constant" val="white" valType="str"/>
@@ -181,7 +156,7 @@
         <Param name="Begin Experiment" updates="constant" val="trial_num = 0" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="# get delta for this trial&amp;#10;delta_thisT = deltas[trial_num] - avatar_y_offset&amp;#10;&amp;#10;# set target position&amp;#10;left_target = -delta_thisT&amp;#10;right_target = delta_thisT&amp;#10;&amp;#10;# set the delay on each trial so pariticpants can't predict &amp;#10;# when to respond&amp;#10;delay = round((random() * 90)) + 60&amp;#10;&amp;#10;# Tried to append another trial given some condition&amp;#10;# Might not be able to do that too easily... &amp;#10;if delta_thisT == 200:&amp;#10;    deltas.append(200)&amp;#10;    num_trials += 1&amp;#10;&amp;#10;&amp;#10;# setting colours&amp;#10;left_colour = box_build&amp;#10;right_colour = box_build&amp;#10;&amp;#10;# choose target&amp;#10;choice = random()&amp;#10;if choice &lt;.5:&amp;#10;    target = &quot;left&quot;&amp;#10;else: &amp;#10;    target = &quot;right&quot;&amp;#10;    &amp;#10;# Isn't quite working... but it's not the most important step just now&amp;#10;# choice = random.choice([0,1])&amp;#10;# print(choice)&amp;#10;#if choice == 1:&amp;#10;#    left_colour = box_burning&amp;#10;#    right_colour = box_build&amp;#10;#else :&amp;#10;#    left_colour = box_burning&amp;#10;#    right_colour = box_build" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="# get delta for this trial&amp;#10;delta_thisT = delta_order[trial_num] - avatar_y_offset&amp;#10;&amp;#10;# set target position&amp;#10;left_target = -delta_thisT&amp;#10;right_target = delta_thisT&amp;#10;&amp;#10;# set the delay on each trial so pariticpants can't predict &amp;#10;# when to respond&amp;#10;delay = round((random() * 90)) + 60&amp;#10;&amp;#10;# Tried to append another trial given some condition&amp;#10;# Might not be able to do that too easily... &amp;#10;if delta_thisT == 200:&amp;#10;    deltas.append(200)&amp;#10;    num_trials += 1&amp;#10;&amp;#10;&amp;#10;# setting colours&amp;#10;left_colour = box_build&amp;#10;right_colour = box_build&amp;#10;&amp;#10;# choose target&amp;#10;choice = random()&amp;#10;if choice &lt;.5:&amp;#10;    target = &quot;left&quot;&amp;#10;else: &amp;#10;    target = &quot;right&quot;&amp;#10;    &amp;#10;# Isn't quite working... but it's not the most important step just now&amp;#10;# choice = random.choice([0,1])&amp;#10;# print(choice)&amp;#10;#if choice == 1:&amp;#10;#    left_colour = box_burning&amp;#10;#    right_colour = box_build&amp;#10;#else :&amp;#10;#    left_colour = box_burning&amp;#10;#    right_colour = box_build" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Py" valType="str"/>
         <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
@@ -210,7 +185,7 @@
         <Param name="pos" updates="constant" val="(0, 100)" valType="code"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="shape" updates="constant" val="rectangle" valType="str"/>
-        <Param name="size" updates="set every frame" val="(Screen_width, box_size + 10)" valType="code"/>
+        <Param name="size" updates="set every frame" val="$(Screen_width, box_size + 10)" valType="code"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -250,10 +225,10 @@
         <Param name="name" updates="None" val="leftTarget" valType="code"/>
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="ori" updates="constant" val="0" valType="code"/>
-        <Param name="pos" updates="set every frame" val="(left_target, 0)" valType="code"/>
+        <Param name="pos" updates="set every frame" val="$(left_target, 0)" valType="code"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="shape" updates="constant" val="rectangle" valType="str"/>
-        <Param name="size" updates="set every frame" val="(box_size, box_size)" valType="code"/>
+        <Param name="size" updates="set every frame" val="$(box_size, box_size)" valType="code"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -275,10 +250,10 @@
         <Param name="name" updates="None" val="rightTarget" valType="code"/>
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="ori" updates="constant" val="0" valType="code"/>
-        <Param name="pos" updates="set every frame" val="(right_target, 0)" valType="code"/>
+        <Param name="pos" updates="set every frame" val="$(right_target, 0)" valType="code"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="shape" updates="constant" val="rectangle" valType="str"/>
-        <Param name="size" updates="set every frame" val="(box_size, box_size)" valType="code"/>
+        <Param name="size" updates="set every frame" val="$(box_size, box_size)" valType="code"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -318,10 +293,10 @@
         <Param name="name" updates="None" val="AvatarPlace" valType="code"/>
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="ori" updates="constant" val="0" valType="code"/>
-        <Param name="pos" updates="set every frame" val="(Avatar_x, Avatar_y)" valType="code"/>
+        <Param name="pos" updates="set every frame" val="$(Avatar_x, Avatar_y)" valType="code"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="shape" updates="constant" val="rectangle" valType="str"/>
-        <Param name="size" updates="set every frame" val="(box_size, box_size)" valType="code"/>
+        <Param name="size" updates="set every frame" val="$(box_size, box_size)" valType="code"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -399,7 +374,7 @@
         <Param name="pos" updates="constant" val="(0, 100)" valType="code"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="shape" updates="constant" val="rectangle" valType="str"/>
-        <Param name="size" updates="set every frame" val="(Screen_width, box_size + 10)" valType="code"/>
+        <Param name="size" updates="set every frame" val="$(Screen_width, box_size + 10)" valType="code"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="frame N" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -412,9 +387,9 @@
         <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="AvatarDrive_x = Avatar_x&amp;#10;AvatarDrive_y = Avatar_y&amp;#10;&amp;#10;# get target location &amp;#10;if target == &quot;left&quot;:&amp;#10;    target_x = left_target&amp;#10;elif target == &quot;right&quot;:&amp;#10;    target_x = right_target&amp;#10;target_y = 0&amp;#10;&amp;#10;# centre mouse by controls&amp;#10;DrivingMouse.setPos(newPos =(0, Arrow_y[2]))&amp;#10;&amp;#10;# frame counter &amp;#10;frame = 0&amp;#10;&amp;#10;state = &quot;null&quot;&amp;#10;&amp;#10;# set colours for arrows &amp;#10;up_col    = Arrow_init_colour&amp;#10;down_col  = Arrow_init_colour&amp;#10;left_col  = Arrow_init_colour&amp;#10;right_col = Arrow_init_colour&amp;#10;&amp;#10;success = 0" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="AvatarDrive_x = Avatar_x&amp;#10;AvatarDrive_y = Avatar_y&amp;#10;&amp;#10;# get target location &amp;#10;if target == &quot;left&quot;:&amp;#10;    target_x = left_target&amp;#10;elif target == &quot;right&quot;:&amp;#10;    target_x = right_target&amp;#10;target_y = 0&amp;#10;&amp;#10;# centre mouse by controls&amp;#10;DrivingMouse.setPos(newPos =(0, Arrow_y[2]))&amp;#10;&amp;#10;# frame counter &amp;#10;frame = 0&amp;#10;&amp;#10;state = &quot;null&quot;&amp;#10;&amp;#10;# set colours for arrows &amp;#10;up_col    = Arrow_init_colour&amp;#10;down_col  = Arrow_init_colour&amp;#10;left_col  = Arrow_init_colour&amp;#10;right_col = Arrow_init_colour&amp;#10;" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Py" valType="str"/>
-        <Param name="Each Frame" updates="constant" val="# add to frame count and check whether to change colour&amp;#10;frame += 1&amp;#10;&amp;#10;# keep mouse in place until trial starts&amp;#10;if frame &lt; delay:&amp;#10;    DrivingMouse.setPos(newPos =(0, Arrow_y[2]))&amp;#10;    &amp;#10;# Don't draw the target early&amp;#10;if frame &gt;= delay:&amp;#10;    if target == &quot;left&quot;:&amp;#10;        left_colour = box_burning&amp;#10;    elif target == &quot;right&quot;:&amp;#10;        right_colour = box_burning&amp;#10;&amp;#10;# Probably don't need this now since keys aren't great&amp;#10;key_pressed = DrivingKeys.keys&amp;#10;# status just checks if we're listening to the keyboard&amp;#10;state = 1&amp;#10;&amp;#10;# use the mouse to drive the avatar&amp;#10;if DrivingMouse.isPressedIn(upClick):&amp;#10;    AvatarDrive_y += avatar_speed&amp;#10;    up_col = Arrow_clik_colour&amp;#10;elif DrivingMouse.isPressedIn(downClick):&amp;#10;    AvatarDrive_y -= avatar_speed&amp;#10;    down_col = Arrow_clik_colour&amp;#10;elif DrivingMouse.isPressedIn(rightClick):&amp;#10;    AvatarDrive_x += avatar_speed&amp;#10;    right_col = Arrow_clik_colour&amp;#10;elif DrivingMouse.isPressedIn(leftClick):&amp;#10;    AvatarDrive_x -= avatar_speed&amp;#10;    left_col = Arrow_clik_colour&amp;#10;else:&amp;#10;    # reset the colours if nothing is clicked&amp;#10;    up_col    = Arrow_init_colour&amp;#10;    down_col  = Arrow_init_colour&amp;#10;    left_col  = Arrow_init_colour&amp;#10;    right_col = Arrow_init_colour&amp;#10;&amp;#10;# Works by allowing people to set the direction of travel and the&amp;#10;# avatar will drive in that direction until another key is pressed &amp;#10;# NB: needs to only store the last key press&amp;#10;#if key_pressed == 'up': &amp;#10;#    AvatarDrive_y += avatar_speed&amp;#10;#elif key_pressed == 'down':&amp;#10;#    AvatarDrive_y -= avatar_speed&amp;#10;#elif key_pressed == 'right':&amp;#10;#    AvatarDrive_x += avatar_speed&amp;#10;#elif key_pressed == 'left':&amp;#10;#    AvatarDrive_x -= avatar_speed&amp;#10;&amp;#10;# This works if we want to make participants tap their keyboard&amp;#10;# NB: must be paired with storing all keys&amp;#10;#if len(key_pressed) &gt; 0:&amp;#10;#    if key_pressed[-1] == 'up': &amp;#10;#        AvatarDrive_y += avatar_speed&amp;#10;#        key_pressed.pop()&amp;#10;#    elif key_pressed[-1] == 'down':&amp;#10;#        AvatarDrive_y -= avatar_speed&amp;#10;#        DrivingKeys.keys.pop()&amp;#10;#    elif key_pressed[-1] == 'right':&amp;#10;#        AvatarDrive_x += avatar_speed&amp;#10;#        DrivingKeys.keys.pop()&amp;#10;#    elif key_pressed[-1] == 'left':&amp;#10;#        AvatarDrive_x -= avatar_speed&amp;#10;#        DrivingKeys.keys.pop()&amp;#10;&amp;#10;# check for success or failure&amp;#10;# Was the target reached?&amp;#10;x_dist = AvatarDrive_x - target_x&amp;#10;y_dist = AvatarDrive_y - target_y&amp;#10;dist = (x_dist)**2 + (y_dist)**2&amp;#10;&amp;#10;if dist**2 &lt;= avatar_reach**2:&amp;#10;    success = 1&amp;#10;&amp;#10;&amp;#10;# has time run out?&amp;#10;if frame &gt;= Trial_time + delay:&amp;#10;    # success = 0&amp;#10;    if target == &quot;left&quot;:&amp;#10;        left_colour = box_burnt&amp;#10;    elif target == &quot;right&quot;:&amp;#10;        right_colour = box_burnt" valType="extendedCode"/>
+        <Param name="Each Frame" updates="constant" val="# add to frame count and check whether to change colour&amp;#10;frame += 1&amp;#10;&amp;#10;# keep mouse in place until trial starts&amp;#10;if frame &lt; delay:&amp;#10;    DrivingMouse.setPos(newPos =(0, Arrow_y[2]))&amp;#10;    &amp;#10;# Don't draw the target early&amp;#10;if frame &gt;= delay:&amp;#10;    if target == &quot;left&quot;:&amp;#10;        left_colour = box_burning&amp;#10;    elif target == &quot;right&quot;:&amp;#10;        right_colour = box_burning&amp;#10;&amp;#10;# Probably don't need this now since keys aren't great&amp;#10;key_pressed = DrivingKeys.keys&amp;#10;# status just checks if we're listening to the keyboard&amp;#10;state = 1&amp;#10;&amp;#10;# use the mouse to drive the avatar&amp;#10;if DrivingMouse.isPressedIn(upClick):&amp;#10;    AvatarDrive_y += avatar_speed&amp;#10;    up_col = Arrow_clik_colour&amp;#10;elif DrivingMouse.isPressedIn(downClick):&amp;#10;    AvatarDrive_y -= avatar_speed&amp;#10;    down_col = Arrow_clik_colour&amp;#10;elif DrivingMouse.isPressedIn(rightClick):&amp;#10;    AvatarDrive_x += avatar_speed&amp;#10;    right_col = Arrow_clik_colour&amp;#10;elif DrivingMouse.isPressedIn(leftClick):&amp;#10;    AvatarDrive_x -= avatar_speed&amp;#10;    left_col = Arrow_clik_colour&amp;#10;else:&amp;#10;    # reset the colours if nothing is clicked&amp;#10;    up_col    = Arrow_init_colour&amp;#10;    down_col  = Arrow_init_colour&amp;#10;    left_col  = Arrow_init_colour&amp;#10;    right_col = Arrow_init_colour&amp;#10;&amp;#10;# Works by allowing people to set the direction of travel and the&amp;#10;# avatar will drive in that direction until another key is pressed &amp;#10;# NB: needs to only store the last key press&amp;#10;#if key_pressed == 'up': &amp;#10;#    AvatarDrive_y += avatar_speed&amp;#10;#elif key_pressed == 'down':&amp;#10;#    AvatarDrive_y -= avatar_speed&amp;#10;#elif key_pressed == 'right':&amp;#10;#    AvatarDrive_x += avatar_speed&amp;#10;#elif key_pressed == 'left':&amp;#10;#    AvatarDrive_x -= avatar_speed&amp;#10;&amp;#10;# check for success or failure&amp;#10;# Was the target reached?&amp;#10;x_dist = AvatarDrive_x - target_x&amp;#10;y_dist = AvatarDrive_y - target_y&amp;#10;dist = (x_dist)**2 + (y_dist)**2&amp;#10;&amp;#10;&amp;#10;if dist &lt;= avatar_reach**2:&amp;#10;    success = 1&amp;#10;    #routine_5c_DrivingAvatar.finished = True&amp;#10;    continueRoutine = False&amp;#10;&amp;#10;# has time run out?&amp;#10;if frame &gt;= Trial_time + delay:&amp;#10;    success = 0&amp;#10;    if target == &quot;left&quot;:&amp;#10;        left_colour = box_burnt&amp;#10;    elif target == &quot;right&quot;:&amp;#10;        right_colour = box_burnt" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
@@ -436,10 +411,10 @@
         <Param name="name" updates="None" val="AvatarPlaced" valType="code"/>
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="ori" updates="constant" val="0" valType="code"/>
-        <Param name="pos" updates="set every frame" val="(Avatar_x, Avatar_y)" valType="code"/>
+        <Param name="pos" updates="set every frame" val="$(Avatar_x, Avatar_y)" valType="code"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="shape" updates="constant" val="rectangle" valType="str"/>
-        <Param name="size" updates="set every frame" val="(box_size, box_size)" valType="code"/>
+        <Param name="size" updates="set every frame" val="$(box_size, box_size)" valType="code"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="frame N" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -461,10 +436,10 @@
         <Param name="name" updates="None" val="LeftBuild" valType="code"/>
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="ori" updates="constant" val="0" valType="code"/>
-        <Param name="pos" updates="set every frame" val="(left_target, 0)" valType="code"/>
+        <Param name="pos" updates="set every frame" val="$(left_target, 0)" valType="code"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="shape" updates="constant" val="rectangle" valType="str"/>
-        <Param name="size" updates="set every frame" val="(box_size, box_size)" valType="code"/>
+        <Param name="size" updates="set every frame" val="$(box_size, box_size)" valType="code"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="frame N" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -486,10 +461,10 @@
         <Param name="name" updates="None" val="RightBuild" valType="code"/>
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="ori" updates="constant" val="0" valType="code"/>
-        <Param name="pos" updates="set every frame" val="(right_target, 0)" valType="code"/>
+        <Param name="pos" updates="set every frame" val="$(right_target, 0)" valType="code"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="shape" updates="constant" val="rectangle" valType="str"/>
-        <Param name="size" updates="set every frame" val="(box_size, box_size)" valType="code"/>
+        <Param name="size" updates="set every frame" val="$(box_size, box_size)" valType="code"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="frame N" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -511,10 +486,10 @@
         <Param name="name" updates="None" val="AvatarDrive" valType="code"/>
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="ori" updates="constant" val="0" valType="code"/>
-        <Param name="pos" updates="set every frame" val="(AvatarDrive_x, AvatarDrive_y)" valType="code"/>
+        <Param name="pos" updates="set every frame" val="$(AvatarDrive_x, AvatarDrive_y)" valType="code"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="shape" updates="constant" val="rectangle" valType="str"/>
-        <Param name="size" updates="set every frame" val="(box_size, box_size)" valType="code"/>
+        <Param name="size" updates="set every frame" val="$(box_size, box_size)" valType="code"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -535,11 +510,11 @@
         <Param name="nVertices" updates="constant" val="4" valType="int"/>
         <Param name="name" updates="None" val="upClick" valType="code"/>
         <Param name="opacity" updates="constant" val="1" valType="code"/>
-        <Param name="ori" updates="set every frame" val="Arrow_orient[0]" valType="code"/>
-        <Param name="pos" updates="set every frame" val="(Arrow_x[0], Arrow_y[0])" valType="code"/>
+        <Param name="ori" updates="set every frame" val="$Arrow_orient[0]" valType="code"/>
+        <Param name="pos" updates="set every frame" val="$(Arrow_x[0], Arrow_y[0])" valType="code"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="shape" updates="constant" val="rectangle" valType="str"/>
-        <Param name="size" updates="set every frame" val="(Arrow_size, Arrow_size)" valType="code"/>
+        <Param name="size" updates="set every frame" val="$(Arrow_size, Arrow_size)" valType="code"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="frame N" valType="str"/>
         <Param name="startVal" updates="None" val="0" valType="code"/>
@@ -560,11 +535,11 @@
         <Param name="nVertices" updates="constant" val="4" valType="int"/>
         <Param name="name" updates="None" val="downClick" valType="code"/>
         <Param name="opacity" updates="constant" val="1" valType="code"/>
-        <Param name="ori" updates="set every frame" val="Arrow_orient[1]" valType="code"/>
-        <Param name="pos" updates="set every frame" val="(Arrow_x[1], Arrow_y[1])" valType="code"/>
+        <Param name="ori" updates="set every frame" val="$Arrow_orient[1]" valType="code"/>
+        <Param name="pos" updates="set every frame" val="$(Arrow_x[1], Arrow_y[1])" valType="code"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="shape" updates="constant" val="rectangle" valType="str"/>
-        <Param name="size" updates="set every frame" val="(Arrow_size, Arrow_size)" valType="code"/>
+        <Param name="size" updates="set every frame" val="$(Arrow_size, Arrow_size)" valType="code"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -585,11 +560,11 @@
         <Param name="nVertices" updates="constant" val="4" valType="int"/>
         <Param name="name" updates="None" val="leftClick" valType="code"/>
         <Param name="opacity" updates="constant" val="1" valType="code"/>
-        <Param name="ori" updates="set every frame" val="Arrow_orient[2]" valType="code"/>
-        <Param name="pos" updates="set every frame" val="(Arrow_x[2], Arrow_y[2])" valType="code"/>
+        <Param name="ori" updates="set every frame" val="$Arrow_orient[2]" valType="code"/>
+        <Param name="pos" updates="set every frame" val="$(Arrow_x[2], Arrow_y[2])" valType="code"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="shape" updates="constant" val="rectangle" valType="str"/>
-        <Param name="size" updates="set every frame" val="(Arrow_size, Arrow_size)" valType="code"/>
+        <Param name="size" updates="set every frame" val="$(Arrow_size, Arrow_size)" valType="code"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -635,11 +610,11 @@
         <Param name="nVertices" updates="constant" val="4" valType="int"/>
         <Param name="name" updates="None" val="upShape" valType="code"/>
         <Param name="opacity" updates="constant" val="1" valType="code"/>
-        <Param name="ori" updates="set every frame" val="Arrow_orient[0]" valType="code"/>
-        <Param name="pos" updates="set every frame" val="(Arrow_x[0], Arrow_y[0])" valType="code"/>
+        <Param name="ori" updates="set every frame" val="$Arrow_orient[0]" valType="code"/>
+        <Param name="pos" updates="set every frame" val="$(Arrow_x[0], Arrow_y[0])" valType="code"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="shape" updates="constant" val="triangle" valType="str"/>
-        <Param name="size" updates="set every frame" val="(Arrow_size, Arrow_size)" valType="code"/>
+        <Param name="size" updates="set every frame" val="$(Arrow_size, Arrow_size)" valType="code"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -660,11 +635,11 @@
         <Param name="nVertices" updates="constant" val="4" valType="int"/>
         <Param name="name" updates="None" val="downShape" valType="code"/>
         <Param name="opacity" updates="constant" val="1" valType="code"/>
-        <Param name="ori" updates="set every frame" val="Arrow_orient[1]" valType="code"/>
-        <Param name="pos" updates="set every frame" val="(Arrow_x[1], Arrow_y[1])" valType="code"/>
+        <Param name="ori" updates="set every frame" val="$Arrow_orient[1]" valType="code"/>
+        <Param name="pos" updates="set every frame" val="$(Arrow_x[1], Arrow_y[1])" valType="code"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="shape" updates="constant" val="triangle" valType="str"/>
-        <Param name="size" updates="set every frame" val="(Arrow_size, Arrow_size)" valType="code"/>
+        <Param name="size" updates="set every frame" val="$(Arrow_size, Arrow_size)" valType="code"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -685,11 +660,11 @@
         <Param name="nVertices" updates="constant" val="4" valType="int"/>
         <Param name="name" updates="None" val="rightShape" valType="code"/>
         <Param name="opacity" updates="constant" val="1" valType="code"/>
-        <Param name="ori" updates="set every frame" val="Arrow_orient[3]" valType="code"/>
-        <Param name="pos" updates="set every frame" val="(Arrow_x[3], Arrow_y[3])" valType="code"/>
+        <Param name="ori" updates="set every frame" val="$Arrow_orient[3]" valType="code"/>
+        <Param name="pos" updates="set every frame" val="$(Arrow_x[3], Arrow_y[3])" valType="code"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="shape" updates="constant" val="triangle" valType="str"/>
-        <Param name="size" updates="set every frame" val="(Arrow_size, Arrow_size)" valType="code"/>
+        <Param name="size" updates="set every frame" val="$(Arrow_size, Arrow_size)" valType="code"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -710,11 +685,11 @@
         <Param name="nVertices" updates="constant" val="4" valType="int"/>
         <Param name="name" updates="None" val="leftShape" valType="code"/>
         <Param name="opacity" updates="constant" val="1" valType="code"/>
-        <Param name="ori" updates="set every frame" val="Arrow_orient[2]" valType="code"/>
-        <Param name="pos" updates="set every frame" val="(Arrow_x[2], Arrow_y[2])" valType="code"/>
+        <Param name="ori" updates="set every frame" val="$Arrow_orient[2]" valType="code"/>
+        <Param name="pos" updates="set every frame" val="$(Arrow_x[2], Arrow_y[2])" valType="code"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="shape" updates="constant" val="triangle" valType="str"/>
-        <Param name="size" updates="set every frame" val="(Arrow_size, Arrow_size)" valType="code"/>
+        <Param name="size" updates="set every frame" val="$(Arrow_size, Arrow_size)" valType="code"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -756,7 +731,7 @@
         <Param name="pos" updates="set every frame" val="(0, 100)" valType="code"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="shape" updates="constant" val="rectangle" valType="str"/>
-        <Param name="size" updates="set every frame" val="(Screen_width, box_size + 10)" valType="code"/>
+        <Param name="size" updates="set every frame" val="$(Screen_width, box_size + 10)" valType="code"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="" valType="code"/>
@@ -778,10 +753,10 @@
         <Param name="name" updates="None" val="AvatarPlacedFeedback" valType="code"/>
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="ori" updates="constant" val="0" valType="code"/>
-        <Param name="pos" updates="set every frame" val="(Avatar_x, Avatar_y)" valType="code"/>
+        <Param name="pos" updates="set every frame" val="$(Avatar_x, Avatar_y)" valType="code"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="shape" updates="constant" val="rectangle" valType="str"/>
-        <Param name="size" updates="set every frame" val="(box_size, box_size)" valType="code"/>
+        <Param name="size" updates="set every frame" val="$(box_size, box_size)" valType="code"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0" valType="code"/>
@@ -803,10 +778,10 @@
         <Param name="name" updates="None" val="LeftFeedback" valType="code"/>
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="ori" updates="constant" val="0" valType="code"/>
-        <Param name="pos" updates="set every frame" val="(left_target, 0)" valType="code"/>
+        <Param name="pos" updates="set every frame" val="$(left_target, 0)" valType="code"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="shape" updates="constant" val="rectangle" valType="str"/>
-        <Param name="size" updates="set every frame" val="(box_size, box_size)" valType="code"/>
+        <Param name="size" updates="set every frame" val="$(box_size, box_size)" valType="code"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -828,10 +803,10 @@
         <Param name="name" updates="None" val="RightFeedback" valType="code"/>
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="ori" updates="constant" val="0" valType="code"/>
-        <Param name="pos" updates="set every frame" val="(right_target, 0)" valType="code"/>
+        <Param name="pos" updates="set every frame" val="$(right_target, 0)" valType="code"/>
         <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
         <Param name="shape" updates="constant" val="rectangle" valType="str"/>
-        <Param name="size" updates="set every frame" val="(box_size, box_size)" valType="code"/>
+        <Param name="size" updates="set every frame" val="$(box_size, box_size)" valType="code"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
@@ -926,7 +901,7 @@
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
       <Param name="isTrials" updates="None" val="True" valType="bool"/>
       <Param name="loopType" updates="None" val="random" valType="str"/>
-      <Param name="nReps" updates="None" val="$num_trials" valType="code"/>
+      <Param name="nReps" updates="None" val="num_trials" valType="code"/>
       <Param name="name" updates="None" val="DecisionTrialLoop" valType="code"/>
       <Param name="random seed" updates="None" val="" valType="code"/>
     </LoopInitiator>

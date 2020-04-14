@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v3.1.2),
-    on April 14, 2020, at 13:19
+    on April 14, 2020, at 16:35
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -79,7 +79,20 @@ routine_1_InitExperimentClock = core.Clock()
 
 # Experiment running conditions
 deltas = [200, 300, 400, 500, 600]
-num_trials = len(deltas)
+num_reps = 2
+num_repsEsts = 1
+
+delta_order = []
+for d in deltas:
+    for rep in range(0,num_reps):
+        delta_order.append(d)
+ 
+# delta_order = shuffle(numpy.repeat(deltas, num_reps))
+np.random.shuffle(delta_order)
+num_trials = len(delta_order)
+print(num_trials)
+print(delta_order)
+
 
 # Screen settings 
 Screen_height = 600
@@ -91,7 +104,7 @@ Trial_time = 120 # this is specified in frames for now
 # avatar setup 
 avatar_speed = 3
 avatar_y_offset = 100
-avatar_reach = 55
+avatar_reach = 30
 box_size = 50
 box_truck   = [1,-1,-1]
 box_placed  = [.5,-.5,-.5]
@@ -124,13 +137,6 @@ WelcomeText = visual.TextStim(win=win, name='WelcomeText',
 
 # Initialize components for Routine "routine_3_Demonstration"
 routine_3_DemonstrationClock = core.Clock()
-DemoText = visual.TextStim(win=win, name='DemoText',
-    text='Temp text\n',
-    font='Arial',
-    pos=(0, 0), height=20, wrapWidth=None, ori=0, 
-    color='white', colorSpace='rgb', opacity=1, 
-    languageStyle='LTR',
-    depth=0.0);
 
 # Initialize components for Routine "routine_4_Trial_Instructions"
 routine_4_Trial_InstructionsClock = core.Clock()
@@ -334,6 +340,43 @@ routine_1_InitExperimentClock.reset()  # clock
 frameN = -1
 continueRoutine = True
 # update component parameters for each repeat
+# get packages we might need 
+# import random
+
+# Experiment running conditions
+#deltas = [200, 300, 400, 500, 600]
+#num_trials = 5
+
+# Screen settings 
+#Screen_height = 600
+#Screen_width = 1200
+
+# Trial conditions 
+#Trial_time = 120 # this is specified in frames for now
+
+# avatar setup 
+#avatar_speed = 3
+#avatar_y_offset = 100
+#avatar_reach = 55
+#box_size = 50
+#box_truck   = [1,-1,-1]
+#box_placed  = [.5,-.5,-.5]
+#box_build   = [.09, -.45,-.85]
+#box_burning = [.64, -.17, -.76]
+#box_burnt   = [-.9, -.9, -.9]
+
+# Control Arrows
+#Arrow_init_colour = [1,1,1]
+#Arrow_clik_colour = [0,0,1]
+#Arrow_size = 30
+#Arrow_orient = [0,180,270,90]
+#Arrow_y = [-150,-220,-185,-185]
+#Arrow_x = [0, 0, -35, 35]
+
+
+
+
+
 # keep track of which components have finished
 routine_1_InitExperimentComponents = []
 for thisComponent in routine_1_InitExperimentComponents:
@@ -508,10 +551,9 @@ for thisBlockLoop in BlockLoop:
         routine_3_DemonstrationClock.reset()  # clock
         frameN = -1
         continueRoutine = True
-        routineTimer.add(1.000000)
         # update component parameters for each repeat
         # keep track of which components have finished
-        routine_3_DemonstrationComponents = [DemoText]
+        routine_3_DemonstrationComponents = []
         for thisComponent in routine_3_DemonstrationComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -521,26 +563,11 @@ for thisBlockLoop in BlockLoop:
                 thisComponent.status = NOT_STARTED
         
         # -------Start Routine "routine_3_Demonstration"-------
-        while continueRoutine and routineTimer.getTime() > 0:
+        while continueRoutine:
             # get current time
             t = routine_3_DemonstrationClock.getTime()
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
-            
-            # *DemoText* updates
-            if t >= 0.0 and DemoText.status == NOT_STARTED:
-                # keep track of start time/frame for later
-                DemoText.tStart = t  # not accounting for scr refresh
-                DemoText.frameNStart = frameN  # exact frame index
-                win.timeOnFlip(DemoText, 'tStartRefresh')  # time at next scr refresh
-                DemoText.setAutoDraw(True)
-            frameRemains = 0.0 + 1.0- win.monitorFramePeriod * 0.75  # most of one frame period left
-            if DemoText.status == STARTED and t >= frameRemains:
-                # keep track of stop time/frame for later
-                DemoText.tStop = t  # not accounting for scr refresh
-                DemoText.frameNStop = frameN  # exact frame index
-                win.timeOnFlip(DemoText, 'tStopRefresh')  # time at next scr refresh
-                DemoText.setAutoDraw(False)
             
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -563,8 +590,8 @@ for thisBlockLoop in BlockLoop:
         for thisComponent in routine_3_DemonstrationComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
-        DemoLoop.addData('DemoText.started', DemoText.tStartRefresh)
-        DemoLoop.addData('DemoText.stopped', DemoText.tStopRefresh)
+        # the Routine "routine_3_Demonstration" was not non-slip safe, so reset the non-slip timer
+        routineTimer.reset()
         thisExp.nextEntry()
         
     # completed 1 repeats of 'DemoLoop'
@@ -686,7 +713,7 @@ for thisBlockLoop in BlockLoop:
         continueRoutine = True
         # update component parameters for each repeat
         # get delta for this trial
-        delta_thisT = deltas[trial_num] - avatar_y_offset
+        delta_thisT = delta_order[trial_num] - avatar_y_offset
         
         # set target position
         left_target = -delta_thisT
@@ -983,7 +1010,6 @@ for thisBlockLoop in BlockLoop:
         left_col  = Arrow_init_colour
         right_col = Arrow_init_colour
         
-        success = 0
         # keep track of which components have finished
         routine_5c_DrivingAvatarComponents = [DrivingMouse, DrivingKeys, DrivingBoundary, AvatarPlaced, LeftBuild, RightBuild, AvatarDrive, upClick, downClick, leftClick, rightClick, upShape, downShape, rightShape, leftShape]
         for thisComponent in routine_5c_DrivingAvatarComponents:
@@ -1118,35 +1144,21 @@ for thisBlockLoop in BlockLoop:
             #elif key_pressed == 'left':
             #    AvatarDrive_x -= avatar_speed
             
-            # This works if we want to make participants tap their keyboard
-            # NB: must be paired with storing all keys
-            #if len(key_pressed) > 0:
-            #    if key_pressed[-1] == 'up': 
-            #        AvatarDrive_y += avatar_speed
-            #        key_pressed.pop()
-            #    elif key_pressed[-1] == 'down':
-            #        AvatarDrive_y -= avatar_speed
-            #        DrivingKeys.keys.pop()
-            #    elif key_pressed[-1] == 'right':
-            #        AvatarDrive_x += avatar_speed
-            #        DrivingKeys.keys.pop()
-            #    elif key_pressed[-1] == 'left':
-            #        AvatarDrive_x -= avatar_speed
-            #        DrivingKeys.keys.pop()
-            
             # check for success or failure
             # Was the target reached?
             x_dist = AvatarDrive_x - target_x
             y_dist = AvatarDrive_y - target_y
             dist = (x_dist)**2 + (y_dist)**2
             
-            if dist**2 <= avatar_reach**2:
-                success = 1
             
+            if dist <= avatar_reach**2:
+                success = 1
+                #routine_5c_DrivingAvatar.finished = True
+                continueRoutine = False
             
             # has time run out?
             if frame >= Trial_time + delay:
-                # success = 0
+                success = 0
                 if target == "left":
                     left_colour = box_burnt
                 elif target == "right":
