@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v3.1.2),
-    on April 14, 2020, at 10:39
+    on April 14, 2020, at 13:19
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -78,8 +78,8 @@ routine_1_InitExperimentClock = core.Clock()
 # import random
 
 # Experiment running conditions
-deltas = [200, 300, 400, 500]
-num_trials = 4
+deltas = [200, 300, 400, 500, 600]
+num_trials = len(deltas)
 
 # Screen settings 
 Screen_height = 600
@@ -91,6 +91,7 @@ Trial_time = 120 # this is specified in frames for now
 # avatar setup 
 avatar_speed = 3
 avatar_y_offset = 100
+avatar_reach = 55
 box_size = 50
 box_truck   = [1,-1,-1]
 box_placed  = [.5,-.5,-.5]
@@ -186,29 +187,29 @@ routine_5c_DrivingAvatarClock = core.Clock()
 DrivingMouse = event.Mouse(win=win)
 x, y = [None, None]
 DrivingMouse.mouseClock = core.Clock()
-text = visual.TextStim(win=win, name='text',
-    text='Ready?',
-    font='Arial',
-    pos=(0, 0), height=20, wrapWidth=None, ori=0, 
-    color='white', colorSpace='rgb', opacity=1, 
-    languageStyle='LTR',
-    depth=-2.0);
-text_2 = visual.TextStim(win=win, name='text_2',
-    text='Drive!',
-    font='Arial',
-    pos=(0, 0), height=20, wrapWidth=None, ori=0, 
-    color='white', colorSpace='rgb', opacity=1, 
-    languageStyle='LTR',
-    depth=-3.0);
 DrivingBoundary = visual.Rect(
     win=win, name='DrivingBoundary',
     width=[1.0, 1.0][0], height=[1.0, 1.0][1],
     ori=0, pos=(0, 100),
     lineWidth=1, lineColor=[-1,-1,-1], lineColorSpace='rgb',
     fillColor=[0,0,0], fillColorSpace='rgb',
-    opacity=1, depth=-4.0, interpolate=True)
+    opacity=1, depth=-2.0, interpolate=True)
 AvatarPlaced = visual.Rect(
     win=win, name='AvatarPlaced',
+    width=[1.0, 1.0][0], height=[1.0, 1.0][1],
+    ori=0, pos=[0,0],
+    lineWidth=1, lineColor=1.0, lineColorSpace='rgb',
+    fillColor=1.0, fillColorSpace='rgb',
+    opacity=1, depth=-4.0, interpolate=True)
+LeftBuild = visual.Rect(
+    win=win, name='LeftBuild',
+    width=[1.0, 1.0][0], height=[1.0, 1.0][1],
+    ori=0, pos=[0,0],
+    lineWidth=1, lineColor=1.0, lineColorSpace='rgb',
+    fillColor=1.0, fillColorSpace='rgb',
+    opacity=1, depth=-5.0, interpolate=True)
+RightBuild = visual.Rect(
+    win=win, name='RightBuild',
     width=[1.0, 1.0][0], height=[1.0, 1.0][1],
     ori=0, pos=[0,0],
     lineWidth=1, lineColor=1.0, lineColorSpace='rgb',
@@ -221,83 +222,107 @@ AvatarDrive = visual.Rect(
     lineWidth=1, lineColor=1.0, lineColorSpace='rgb',
     fillColor=1.0, fillColorSpace='rgb',
     opacity=1, depth=-7.0, interpolate=True)
-LeftBuild = visual.Rect(
-    win=win, name='LeftBuild',
-    width=[1.0, 1.0][0], height=[1.0, 1.0][1],
-    ori=0, pos=[0,0],
-    lineWidth=1, lineColor=1.0, lineColorSpace='rgb',
-    fillColor=1.0, fillColorSpace='rgb',
-    opacity=1, depth=-8.0, interpolate=True)
-RightBuild = visual.Rect(
-    win=win, name='RightBuild',
-    width=[1.0, 1.0][0], height=[1.0, 1.0][1],
-    ori=0, pos=[0,0],
-    lineWidth=1, lineColor=1.0, lineColorSpace='rgb',
-    fillColor=1.0, fillColorSpace='rgb',
-    opacity=1, depth=-9.0, interpolate=True)
-TestCheck = visual.TextStim(win=win, name='TestCheck',
-    text='default text',
-    font='Arial',
-    pos=(0, -50), height=20, wrapWidth=None, ori=0, 
-    color='white', colorSpace='rgb', opacity=1, 
-    languageStyle='LTR',
-    depth=-10.0);
 upClick = visual.Rect(
     win=win, name='upClick',
     width=[1.0, 1.0][0], height=[1.0, 1.0][1],
     ori=1.0, pos=[0,0],
     lineWidth=1, lineColor=1.0, lineColorSpace='rgb',
     fillColor=1.0, fillColorSpace='rgb',
-    opacity=1, depth=-11.0, interpolate=True)
+    opacity=1, depth=-8.0, interpolate=True)
 downClick = visual.Rect(
     win=win, name='downClick',
     width=[1.0, 1.0][0], height=[1.0, 1.0][1],
     ori=1.0, pos=[0,0],
     lineWidth=1, lineColor=[-1,-1,-1], lineColorSpace='rgb',
     fillColor=[1,1,1], fillColorSpace='rgb',
-    opacity=1, depth=-12.0, interpolate=True)
+    opacity=1, depth=-9.0, interpolate=True)
 leftClick = visual.Rect(
     win=win, name='leftClick',
     width=[1.0, 1.0][0], height=[1.0, 1.0][1],
     ori=1.0, pos=[0,0],
     lineWidth=1, lineColor=[-1,-1,-1], lineColorSpace='rgb',
     fillColor=[1,1,1], fillColorSpace='rgb',
-    opacity=1, depth=-13.0, interpolate=True)
+    opacity=1, depth=-10.0, interpolate=True)
 rightClick = visual.Rect(
     win=win, name='rightClick',
     width=[1.0, 1.0][0], height=[1.0, 1.0][1],
     ori=1.0, pos=[0,0],
     lineWidth=1, lineColor=[-1,-1,-1], lineColorSpace='rgb',
     fillColor=[1,1,1], fillColorSpace='rgb',
-    opacity=1, depth=-14.0, interpolate=True)
+    opacity=1, depth=-11.0, interpolate=True)
 upShape = visual.ShapeStim(
     win=win, name='upShape',
     vertices=[[-[1.0, 1.0][0]/2.0,-[1.0, 1.0][1]/2.0], [+[1.0, 1.0][0]/2.0,-[1.0, 1.0][1]/2.0], [0,[1.0, 1.0][1]/2.0]],
     ori=1.0, pos=[0,0],
     lineWidth=1, lineColor=1.0, lineColorSpace='rgb',
     fillColor=1.0, fillColorSpace='rgb',
-    opacity=1, depth=-15.0, interpolate=True)
+    opacity=1, depth=-12.0, interpolate=True)
 downShape = visual.ShapeStim(
     win=win, name='downShape',
     vertices=[[-[1.0, 1.0][0]/2.0,-[1.0, 1.0][1]/2.0], [+[1.0, 1.0][0]/2.0,-[1.0, 1.0][1]/2.0], [0,[1.0, 1.0][1]/2.0]],
     ori=1.0, pos=[0,0],
     lineWidth=1, lineColor=1.0, lineColorSpace='rgb',
     fillColor=1.0, fillColorSpace='rgb',
-    opacity=1, depth=-16.0, interpolate=True)
+    opacity=1, depth=-13.0, interpolate=True)
 rightShape = visual.ShapeStim(
     win=win, name='rightShape',
     vertices=[[-[1.0, 1.0][0]/2.0,-[1.0, 1.0][1]/2.0], [+[1.0, 1.0][0]/2.0,-[1.0, 1.0][1]/2.0], [0,[1.0, 1.0][1]/2.0]],
     ori=1.0, pos=[0,0],
     lineWidth=1, lineColor=1.0, lineColorSpace='rgb',
     fillColor=1.0, fillColorSpace='rgb',
-    opacity=1, depth=-17.0, interpolate=True)
+    opacity=1, depth=-14.0, interpolate=True)
 leftShape = visual.ShapeStim(
     win=win, name='leftShape',
     vertices=[[-[1.0, 1.0][0]/2.0,-[1.0, 1.0][1]/2.0], [+[1.0, 1.0][0]/2.0,-[1.0, 1.0][1]/2.0], [0,[1.0, 1.0][1]/2.0]],
     ori=1.0, pos=[0,0],
     lineWidth=1, lineColor=1.0, lineColorSpace='rgb',
     fillColor=1.0, fillColorSpace='rgb',
-    opacity=1, depth=-18.0, interpolate=True)
+    opacity=1, depth=-15.0, interpolate=True)
+
+# Initialize components for Routine "routine_5d_TrialFeedback"
+routine_5d_TrialFeedbackClock = core.Clock()
+DrivingBoundaryFeedback = visual.Rect(
+    win=win, name='DrivingBoundaryFeedback',
+    width=[1.0, 1.0][0], height=[1.0, 1.0][1],
+    ori=0, pos=[0,0],
+    lineWidth=1, lineColor=[-1,-1,-1], lineColorSpace='rgb',
+    fillColor=[0,0,0], fillColorSpace='rgb',
+    opacity=1, depth=-1.0, interpolate=True)
+AvatarPlacedFeedback = visual.Rect(
+    win=win, name='AvatarPlacedFeedback',
+    width=[1.0, 1.0][0], height=[1.0, 1.0][1],
+    ori=0, pos=[0,0],
+    lineWidth=1, lineColor=1.0, lineColorSpace='rgb',
+    fillColor=1.0, fillColorSpace='rgb',
+    opacity=1, depth=-2.0, interpolate=True)
+LeftFeedback = visual.Rect(
+    win=win, name='LeftFeedback',
+    width=[1.0, 1.0][0], height=[1.0, 1.0][1],
+    ori=0, pos=[0,0],
+    lineWidth=1, lineColor=1.0, lineColorSpace='rgb',
+    fillColor=1.0, fillColorSpace='rgb',
+    opacity=1, depth=-3.0, interpolate=True)
+RightFeedback = visual.Rect(
+    win=win, name='RightFeedback',
+    width=[1.0, 1.0][0], height=[1.0, 1.0][1],
+    ori=0, pos=[0,0],
+    lineWidth=1, lineColor=1.0, lineColorSpace='rgb',
+    fillColor=1.0, fillColorSpace='rgb',
+    opacity=1, depth=-4.0, interpolate=True)
+AvatarFeedback = visual.Rect(
+    win=win, name='AvatarFeedback',
+    width=[1.0, 1.0][0], height=[1.0, 1.0][1],
+    ori=0, pos=[0,0],
+    lineWidth=1, lineColor=1.0, lineColorSpace='rgb',
+    fillColor=1.0, fillColorSpace='rgb',
+    opacity=1, depth=-5.0, interpolate=True)
+text = visual.TextStim(win=win, name='text',
+    text='default text',
+    font='Arial',
+    pos=(0, 150), height=20, wrapWidth=None, ori=0, 
+    color='white', colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
+    depth=-6.0);
 
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
@@ -669,7 +694,7 @@ for thisBlockLoop in BlockLoop:
         
         # set the delay on each trial so pariticpants can't predict 
         # when to respond
-        delay = round((random() * 100)) + 20
+        delay = round((random() * 90)) + 60
         
         # Tried to append another trial given some condition
         # Might not be able to do that too easily... 
@@ -937,7 +962,14 @@ for thisBlockLoop in BlockLoop:
         AvatarDrive_x = Avatar_x
         AvatarDrive_y = Avatar_y
         
-        # put mouse to arrow part 
+        # get target location 
+        if target == "left":
+            target_x = left_target
+        elif target == "right":
+            target_x = right_target
+        target_y = 0
+        
+        # centre mouse by controls
         DrivingMouse.setPos(newPos =(0, Arrow_y[2]))
         
         # frame counter 
@@ -950,8 +982,10 @@ for thisBlockLoop in BlockLoop:
         down_col  = Arrow_init_colour
         left_col  = Arrow_init_colour
         right_col = Arrow_init_colour
+        
+        success = 0
         # keep track of which components have finished
-        routine_5c_DrivingAvatarComponents = [DrivingMouse, DrivingKeys, text, text_2, DrivingBoundary, AvatarPlaced, AvatarDrive, LeftBuild, RightBuild, TestCheck, upClick, downClick, leftClick, rightClick, upShape, downShape, rightShape, leftShape]
+        routine_5c_DrivingAvatarComponents = [DrivingMouse, DrivingKeys, DrivingBoundary, AvatarPlaced, LeftBuild, RightBuild, AvatarDrive, upClick, downClick, leftClick, rightClick, upShape, downShape, rightShape, leftShape]
         for thisComponent in routine_5c_DrivingAvatarComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -1017,34 +1051,6 @@ for thisBlockLoop in BlockLoop:
                         endExpNow = True
                     DrivingKeys.keys = theseKeys.name  # just the last key pressed
                     DrivingKeys.rt = theseKeys.rt
-            
-            # *text* updates
-            if frameN >= 0.0 and text.status == NOT_STARTED:
-                # keep track of start time/frame for later
-                text.tStart = t  # not accounting for scr refresh
-                text.frameNStart = frameN  # exact frame index
-                win.timeOnFlip(text, 'tStartRefresh')  # time at next scr refresh
-                text.setAutoDraw(True)
-            if text.status == STARTED and frameN >= delay:
-                # keep track of stop time/frame for later
-                text.tStop = t  # not accounting for scr refresh
-                text.frameNStop = frameN  # exact frame index
-                win.timeOnFlip(text, 'tStopRefresh')  # time at next scr refresh
-                text.setAutoDraw(False)
-            
-            # *text_2* updates
-            if frameN >= delay and text_2.status == NOT_STARTED:
-                # keep track of start time/frame for later
-                text_2.tStart = t  # not accounting for scr refresh
-                text_2.frameNStart = frameN  # exact frame index
-                win.timeOnFlip(text_2, 'tStartRefresh')  # time at next scr refresh
-                text_2.setAutoDraw(True)
-            if text_2.status == STARTED and frameN >= Trial_time + delay:
-                # keep track of stop time/frame for later
-                text_2.tStop = t  # not accounting for scr refresh
-                text_2.frameNStop = frameN  # exact frame index
-                win.timeOnFlip(text_2, 'tStopRefresh')  # time at next scr refresh
-                text_2.setAutoDraw(False)
             
             # *DrivingBoundary* updates
             if frameN >= 0.0 and DrivingBoundary.status == NOT_STARTED:
@@ -1128,7 +1134,23 @@ for thisBlockLoop in BlockLoop:
             #        AvatarDrive_x -= avatar_speed
             #        DrivingKeys.keys.pop()
             
+            # check for success or failure
+            # Was the target reached?
+            x_dist = AvatarDrive_x - target_x
+            y_dist = AvatarDrive_y - target_y
+            dist = (x_dist)**2 + (y_dist)**2
             
+            if dist**2 <= avatar_reach**2:
+                success = 1
+            
+            
+            # has time run out?
+            if frame >= Trial_time + delay:
+                # success = 0
+                if target == "left":
+                    left_colour = box_burnt
+                elif target == "right":
+                    right_colour = box_burnt
             
             # *AvatarPlaced* updates
             if frameN >= 0.0 and AvatarPlaced.status == NOT_STARTED:
@@ -1148,25 +1170,6 @@ for thisBlockLoop in BlockLoop:
                 AvatarPlaced.setSize((box_size, box_size), log=False)
                 AvatarPlaced.setFillColor(box_placed, log=False)
                 AvatarPlaced.setLineColor(box_placed, log=False)
-            
-            # *AvatarDrive* updates
-            if t >= 0.0 and AvatarDrive.status == NOT_STARTED:
-                # keep track of start time/frame for later
-                AvatarDrive.tStart = t  # not accounting for scr refresh
-                AvatarDrive.frameNStart = frameN  # exact frame index
-                win.timeOnFlip(AvatarDrive, 'tStartRefresh')  # time at next scr refresh
-                AvatarDrive.setAutoDraw(True)
-            if AvatarDrive.status == STARTED and frameN >= Trial_time + delay:
-                # keep track of stop time/frame for later
-                AvatarDrive.tStop = t  # not accounting for scr refresh
-                AvatarDrive.frameNStop = frameN  # exact frame index
-                win.timeOnFlip(AvatarDrive, 'tStopRefresh')  # time at next scr refresh
-                AvatarDrive.setAutoDraw(False)
-            if AvatarDrive.status == STARTED:  # only update if drawing
-                AvatarDrive.setPos((AvatarDrive_x, AvatarDrive_y), log=False)
-                AvatarDrive.setSize((box_size, box_size), log=False)
-                AvatarDrive.setFillColor(box_truck, log=False)
-                AvatarDrive.setLineColor(box_truck, log=False)
             
             # *LeftBuild* updates
             if frameN >= 0.0 and LeftBuild.status == NOT_STARTED:
@@ -1206,22 +1209,24 @@ for thisBlockLoop in BlockLoop:
                 RightBuild.setFillColor(right_colour, log=False)
                 RightBuild.setLineColor(right_colour, log=False)
             
-            # *TestCheck* updates
-            if frameN >= 0.0 and TestCheck.status == NOT_STARTED:
+            # *AvatarDrive* updates
+            if t >= 0.0 and AvatarDrive.status == NOT_STARTED:
                 # keep track of start time/frame for later
-                TestCheck.tStart = t  # not accounting for scr refresh
-                TestCheck.frameNStart = frameN  # exact frame index
-                win.timeOnFlip(TestCheck, 'tStartRefresh')  # time at next scr refresh
-                TestCheck.setAutoDraw(True)
-            if TestCheck.status == STARTED and frameN >= Trial_time + delay:
+                AvatarDrive.tStart = t  # not accounting for scr refresh
+                AvatarDrive.frameNStart = frameN  # exact frame index
+                win.timeOnFlip(AvatarDrive, 'tStartRefresh')  # time at next scr refresh
+                AvatarDrive.setAutoDraw(True)
+            if AvatarDrive.status == STARTED and frameN >= Trial_time + delay:
                 # keep track of stop time/frame for later
-                TestCheck.tStop = t  # not accounting for scr refresh
-                TestCheck.frameNStop = frameN  # exact frame index
-                win.timeOnFlip(TestCheck, 'tStopRefresh')  # time at next scr refresh
-                TestCheck.setAutoDraw(False)
-            if TestCheck.status == STARTED:  # only update if drawing
-                TestCheck.setText(state
-, log=False)
+                AvatarDrive.tStop = t  # not accounting for scr refresh
+                AvatarDrive.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(AvatarDrive, 'tStopRefresh')  # time at next scr refresh
+                AvatarDrive.setAutoDraw(False)
+            if AvatarDrive.status == STARTED:  # only update if drawing
+                AvatarDrive.setPos((AvatarDrive_x, AvatarDrive_y), log=False)
+                AvatarDrive.setSize((box_size, box_size), log=False)
+                AvatarDrive.setFillColor(box_truck, log=False)
+                AvatarDrive.setLineColor(box_truck, log=False)
             
             # *upClick* updates
             if frameN >= 0 and upClick.status == NOT_STARTED:
@@ -1416,31 +1421,39 @@ for thisBlockLoop in BlockLoop:
             DecisionTrialLoop.addData('DrivingKeys.rt', DrivingKeys.rt)
         DecisionTrialLoop.addData('DrivingKeys.started', DrivingKeys.tStartRefresh)
         DecisionTrialLoop.addData('DrivingKeys.stopped', DrivingKeys.tStopRefresh)
-        DecisionTrialLoop.addData('text.started', text.tStartRefresh)
-        DecisionTrialLoop.addData('text.stopped', text.tStopRefresh)
-        DecisionTrialLoop.addData('text_2.started', text_2.tStartRefresh)
-        DecisionTrialLoop.addData('text_2.stopped', text_2.tStopRefresh)
         DecisionTrialLoop.addData('DrivingBoundary.started', DrivingBoundary.tStartRefresh)
         DecisionTrialLoop.addData('DrivingBoundary.stopped', DrivingBoundary.tStopRefresh)
-        d = dir(DrivingKeys)
+        # Establish success or failure 
         
-        #print(d)
-        #print(DrivingKeys.stop)
+        # This was a dumb thought... ignore that 
+        #if (AvatarDrive_y)**2 + (AvatarDrive_x)**2 == (avatar_reach)**2:
+        #    success = 1
+        #    if target == "left":
+        #        left_colour = box_build
+        #    elif target == "right":
+        #        right_colour = box_build
         
-        #for i in d:
-        #    print(i + " " + d[i])
         
-        #print(DrivingKeys['status'])
+        # check if time ran out
+        if success == 0:
+            if target == "left":
+                left_colour = box_burnt
+            elif target == "right":
+                right_colour = box_burnt
+        if success == 1:
+            if target == "left":
+                left_colour = box_build
+            elif target == "right":
+                right_colour = box_build
+        
         DecisionTrialLoop.addData('AvatarPlaced.started', AvatarPlaced.tStartRefresh)
         DecisionTrialLoop.addData('AvatarPlaced.stopped', AvatarPlaced.tStopRefresh)
-        DecisionTrialLoop.addData('AvatarDrive.started', AvatarDrive.tStartRefresh)
-        DecisionTrialLoop.addData('AvatarDrive.stopped', AvatarDrive.tStopRefresh)
         DecisionTrialLoop.addData('LeftBuild.started', LeftBuild.tStartRefresh)
         DecisionTrialLoop.addData('LeftBuild.stopped', LeftBuild.tStopRefresh)
         DecisionTrialLoop.addData('RightBuild.started', RightBuild.tStartRefresh)
         DecisionTrialLoop.addData('RightBuild.stopped', RightBuild.tStopRefresh)
-        DecisionTrialLoop.addData('TestCheck.started', TestCheck.tStartRefresh)
-        DecisionTrialLoop.addData('TestCheck.stopped', TestCheck.tStopRefresh)
+        DecisionTrialLoop.addData('AvatarDrive.started', AvatarDrive.tStartRefresh)
+        DecisionTrialLoop.addData('AvatarDrive.stopped', AvatarDrive.tStopRefresh)
         DecisionTrialLoop.addData('upClick.started', upClick.tStartRefresh)
         DecisionTrialLoop.addData('upClick.stopped', upClick.tStopRefresh)
         DecisionTrialLoop.addData('downClick.started', downClick.tStartRefresh)
@@ -1458,6 +1471,178 @@ for thisBlockLoop in BlockLoop:
         DecisionTrialLoop.addData('leftShape.started', leftShape.tStartRefresh)
         DecisionTrialLoop.addData('leftShape.stopped', leftShape.tStopRefresh)
         # the Routine "routine_5c_DrivingAvatar" was not non-slip safe, so reset the non-slip timer
+        routineTimer.reset()
+        
+        # ------Prepare to start Routine "routine_5d_TrialFeedback"-------
+        t = 0
+        routine_5d_TrialFeedbackClock.reset()  # clock
+        frameN = -1
+        continueRoutine = True
+        # update component parameters for each repeat
+        if success == 1:
+            Feedback_text = "You made it! :)"
+        elif success == 0: 
+            Feedback_text = "The house burnt down :/"
+        # keep track of which components have finished
+        routine_5d_TrialFeedbackComponents = [DrivingBoundaryFeedback, AvatarPlacedFeedback, LeftFeedback, RightFeedback, AvatarFeedback, text]
+        for thisComponent in routine_5d_TrialFeedbackComponents:
+            thisComponent.tStart = None
+            thisComponent.tStop = None
+            thisComponent.tStartRefresh = None
+            thisComponent.tStopRefresh = None
+            if hasattr(thisComponent, 'status'):
+                thisComponent.status = NOT_STARTED
+        
+        # -------Start Routine "routine_5d_TrialFeedback"-------
+        while continueRoutine:
+            # get current time
+            t = routine_5d_TrialFeedbackClock.getTime()
+            frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+            # update/draw components on each frame
+            
+            # *DrivingBoundaryFeedback* updates
+            if t >= 0.0 and DrivingBoundaryFeedback.status == NOT_STARTED:
+                # keep track of start time/frame for later
+                DrivingBoundaryFeedback.tStart = t  # not accounting for scr refresh
+                DrivingBoundaryFeedback.frameNStart = frameN  # exact frame index
+                win.timeOnFlip(DrivingBoundaryFeedback, 'tStartRefresh')  # time at next scr refresh
+                DrivingBoundaryFeedback.setAutoDraw(True)
+            if DrivingBoundaryFeedback.status == STARTED and frameN >= 120:
+                # keep track of stop time/frame for later
+                DrivingBoundaryFeedback.tStop = t  # not accounting for scr refresh
+                DrivingBoundaryFeedback.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(DrivingBoundaryFeedback, 'tStopRefresh')  # time at next scr refresh
+                DrivingBoundaryFeedback.setAutoDraw(False)
+            if DrivingBoundaryFeedback.status == STARTED:  # only update if drawing
+                DrivingBoundaryFeedback.setPos((0, 100), log=False)
+                DrivingBoundaryFeedback.setSize((Screen_width, box_size + 10), log=False)
+            
+            # *AvatarPlacedFeedback* updates
+            if t >= 0 and AvatarPlacedFeedback.status == NOT_STARTED:
+                # keep track of start time/frame for later
+                AvatarPlacedFeedback.tStart = t  # not accounting for scr refresh
+                AvatarPlacedFeedback.frameNStart = frameN  # exact frame index
+                win.timeOnFlip(AvatarPlacedFeedback, 'tStartRefresh')  # time at next scr refresh
+                AvatarPlacedFeedback.setAutoDraw(True)
+            if AvatarPlacedFeedback.status == STARTED and frameN >= 120:
+                # keep track of stop time/frame for later
+                AvatarPlacedFeedback.tStop = t  # not accounting for scr refresh
+                AvatarPlacedFeedback.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(AvatarPlacedFeedback, 'tStopRefresh')  # time at next scr refresh
+                AvatarPlacedFeedback.setAutoDraw(False)
+            if AvatarPlacedFeedback.status == STARTED:  # only update if drawing
+                AvatarPlacedFeedback.setPos((Avatar_x, Avatar_y), log=False)
+                AvatarPlacedFeedback.setSize((box_size, box_size), log=False)
+                AvatarPlacedFeedback.setFillColor(box_placed, log=False)
+                AvatarPlacedFeedback.setLineColor(box_placed, log=False)
+            
+            # *LeftFeedback* updates
+            if t >= 0.0 and LeftFeedback.status == NOT_STARTED:
+                # keep track of start time/frame for later
+                LeftFeedback.tStart = t  # not accounting for scr refresh
+                LeftFeedback.frameNStart = frameN  # exact frame index
+                win.timeOnFlip(LeftFeedback, 'tStartRefresh')  # time at next scr refresh
+                LeftFeedback.setAutoDraw(True)
+            if LeftFeedback.status == STARTED and frameN >= 120:
+                # keep track of stop time/frame for later
+                LeftFeedback.tStop = t  # not accounting for scr refresh
+                LeftFeedback.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(LeftFeedback, 'tStopRefresh')  # time at next scr refresh
+                LeftFeedback.setAutoDraw(False)
+            if LeftFeedback.status == STARTED:  # only update if drawing
+                LeftFeedback.setPos((left_target, 0), log=False)
+                LeftFeedback.setSize((box_size, box_size), log=False)
+                LeftFeedback.setFillColor(left_colour, log=False)
+                LeftFeedback.setLineColor(left_colour, log=False)
+            
+            # *RightFeedback* updates
+            if t >= 0.0 and RightFeedback.status == NOT_STARTED:
+                # keep track of start time/frame for later
+                RightFeedback.tStart = t  # not accounting for scr refresh
+                RightFeedback.frameNStart = frameN  # exact frame index
+                win.timeOnFlip(RightFeedback, 'tStartRefresh')  # time at next scr refresh
+                RightFeedback.setAutoDraw(True)
+            if RightFeedback.status == STARTED and frameN >= 120:
+                # keep track of stop time/frame for later
+                RightFeedback.tStop = t  # not accounting for scr refresh
+                RightFeedback.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(RightFeedback, 'tStopRefresh')  # time at next scr refresh
+                RightFeedback.setAutoDraw(False)
+            if RightFeedback.status == STARTED:  # only update if drawing
+                RightFeedback.setPos((right_target, 0), log=False)
+                RightFeedback.setSize((box_size, box_size), log=False)
+                RightFeedback.setFillColor(right_colour, log=False)
+                RightFeedback.setLineColor(right_colour, log=False)
+            
+            # *AvatarFeedback* updates
+            if t >= 0.0 and AvatarFeedback.status == NOT_STARTED:
+                # keep track of start time/frame for later
+                AvatarFeedback.tStart = t  # not accounting for scr refresh
+                AvatarFeedback.frameNStart = frameN  # exact frame index
+                win.timeOnFlip(AvatarFeedback, 'tStartRefresh')  # time at next scr refresh
+                AvatarFeedback.setAutoDraw(True)
+            if AvatarFeedback.status == STARTED and frameN >= 120:
+                # keep track of stop time/frame for later
+                AvatarFeedback.tStop = t  # not accounting for scr refresh
+                AvatarFeedback.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(AvatarFeedback, 'tStopRefresh')  # time at next scr refresh
+                AvatarFeedback.setAutoDraw(False)
+            if AvatarFeedback.status == STARTED:  # only update if drawing
+                AvatarFeedback.setPos((AvatarDrive_x, AvatarDrive_y), log=False)
+                AvatarFeedback.setSize((box_size, box_size), log=False)
+                AvatarFeedback.setFillColor(box_truck, log=False)
+                AvatarFeedback.setLineColor(box_truck, log=False)
+            
+            # *text* updates
+            if t >= 0.0 and text.status == NOT_STARTED:
+                # keep track of start time/frame for later
+                text.tStart = t  # not accounting for scr refresh
+                text.frameNStart = frameN  # exact frame index
+                win.timeOnFlip(text, 'tStartRefresh')  # time at next scr refresh
+                text.setAutoDraw(True)
+            if text.status == STARTED and frameN >= 120:
+                # keep track of stop time/frame for later
+                text.tStop = t  # not accounting for scr refresh
+                text.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(text, 'tStopRefresh')  # time at next scr refresh
+                text.setAutoDraw(False)
+            if text.status == STARTED:  # only update if drawing
+                text.setText(Feedback_text, log=False)
+            
+            # check for quit (typically the Esc key)
+            if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
+                core.quit()
+            
+            # check if all components have finished
+            if not continueRoutine:  # a component has requested a forced-end of Routine
+                break
+            continueRoutine = False  # will revert to True if at least one component still running
+            for thisComponent in routine_5d_TrialFeedbackComponents:
+                if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                    continueRoutine = True
+                    break  # at least one component has not yet finished
+            
+            # refresh the screen
+            if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+                win.flip()
+        
+        # -------Ending Routine "routine_5d_TrialFeedback"-------
+        for thisComponent in routine_5d_TrialFeedbackComponents:
+            if hasattr(thisComponent, "setAutoDraw"):
+                thisComponent.setAutoDraw(False)
+        DecisionTrialLoop.addData('DrivingBoundaryFeedback.started', DrivingBoundaryFeedback.tStartRefresh)
+        DecisionTrialLoop.addData('DrivingBoundaryFeedback.stopped', DrivingBoundaryFeedback.tStopRefresh)
+        DecisionTrialLoop.addData('AvatarPlacedFeedback.started', AvatarPlacedFeedback.tStartRefresh)
+        DecisionTrialLoop.addData('AvatarPlacedFeedback.stopped', AvatarPlacedFeedback.tStopRefresh)
+        DecisionTrialLoop.addData('LeftFeedback.started', LeftFeedback.tStartRefresh)
+        DecisionTrialLoop.addData('LeftFeedback.stopped', LeftFeedback.tStopRefresh)
+        DecisionTrialLoop.addData('RightFeedback.started', RightFeedback.tStartRefresh)
+        DecisionTrialLoop.addData('RightFeedback.stopped', RightFeedback.tStopRefresh)
+        DecisionTrialLoop.addData('AvatarFeedback.started', AvatarFeedback.tStartRefresh)
+        DecisionTrialLoop.addData('AvatarFeedback.stopped', AvatarFeedback.tStopRefresh)
+        DecisionTrialLoop.addData('text.started', text.tStartRefresh)
+        DecisionTrialLoop.addData('text.stopped', text.tStopRefresh)
+        # the Routine "routine_5d_TrialFeedback" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
         thisExp.nextEntry()
         
