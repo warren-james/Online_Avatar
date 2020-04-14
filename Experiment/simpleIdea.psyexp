@@ -32,7 +32,7 @@
   <Routines>
     <Routine name="routine_1_InitExperiment">
       <CodeComponent name="InitCode">
-        <Param name="Begin Experiment" updates="constant" val="# get packages we might need &amp;#10;# import random&amp;#10;&amp;#10;# Experiment running conditions&amp;#10;deltas = [200, 300, 400, 500]&amp;#10;num_trials = 4&amp;#10;&amp;#10;# Screen settings &amp;#10;Screen_height = 600&amp;#10;Screen_width = 1200&amp;#10;&amp;#10;# Trial conditions &amp;#10;Trial_time = 120 # this is specified in frames for now&amp;#10;&amp;#10;# avatar setup &amp;#10;avatar_speed = 3&amp;#10;avatar_y_offset = 100&amp;#10;box_size = 50&amp;#10;box_truck   = [1,-1,-1]&amp;#10;box_placed  = [.5,-.5,-.5]&amp;#10;box_build   = [.09, -.45,-.85]&amp;#10;box_burning = [.64, -.17, -.76]&amp;#10;box_burnt   = [-.9, -.9, -.9]&amp;#10;&amp;#10;# Control Arrows&amp;#10;Arrow_size = 30&amp;#10;Arrow_orient = [0,180,270,90]&amp;#10;Arrow_y = [-150,-220,-185,-185]&amp;#10;Arrow_x = [0, 0, -35, 35]&amp;#10;&amp;#10;&amp;#10;&amp;#10;&amp;#10;" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="# get packages we might need &amp;#10;# import random&amp;#10;&amp;#10;# Experiment running conditions&amp;#10;deltas = [200, 300, 400, 500]&amp;#10;num_trials = 4&amp;#10;&amp;#10;# Screen settings &amp;#10;Screen_height = 600&amp;#10;Screen_width = 1200&amp;#10;&amp;#10;# Trial conditions &amp;#10;Trial_time = 120 # this is specified in frames for now&amp;#10;&amp;#10;# avatar setup &amp;#10;avatar_speed = 3&amp;#10;avatar_y_offset = 100&amp;#10;box_size = 50&amp;#10;box_truck   = [1,-1,-1]&amp;#10;box_placed  = [.5,-.5,-.5]&amp;#10;box_build   = [.09, -.45,-.85]&amp;#10;box_burning = [.64, -.17, -.76]&amp;#10;box_burnt   = [-.9, -.9, -.9]&amp;#10;&amp;#10;# Control Arrows&amp;#10;Arrow_init_colour = [1,1,1]&amp;#10;Arrow_clik_colour = [0,0,1]&amp;#10;Arrow_size = 30&amp;#10;Arrow_orient = [0,180,270,90]&amp;#10;Arrow_y = [-150,-220,-185,-185]&amp;#10;Arrow_x = [0, 0, -35, 35]&amp;#10;&amp;#10;&amp;#10;&amp;#10;&amp;#10;" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
@@ -336,7 +336,7 @@
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="frame = 0&amp;#10;Avatar_x = 0" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Py" valType="str"/>
-        <Param name="Each Frame" updates="constant" val="# check for mouse click&amp;#10;if AvatarMouse.getPressed()[0]:&amp;#10;    Avatar_x = AvatarMouse.getPos()[0]&amp;#10;    Avatar_y = 100" valType="extendedCode"/>
+        <Param name="Each Frame" updates="constant" val="# check for mouse click&amp;#10;if AvatarMouse.getPos()[1] &gt; 100 - (box_size/2) and AvatarMouse.getPos()[1] &lt; 100 + (box_size/2):&amp;#10;    if AvatarMouse.getPressed()[0]:&amp;#10;        Avatar_x = AvatarMouse.getPos()[0]&amp;#10;        Avatar_y = 100" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
@@ -460,9 +460,9 @@
         <Param name="Begin Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin JS Routine" updates="constant" val="" valType="extendedCode"/>
-        <Param name="Begin Routine" updates="constant" val="AvatarDrive_x = Avatar_x&amp;#10;AvatarDrive_y = Avatar_y&amp;#10;&amp;#10;# put mouse to arrow part &amp;#10;DrivingMouse.setPos(newPos =(0, Arrow_y[2]))&amp;#10;&amp;#10;# frame counter &amp;#10;frame = 0&amp;#10;&amp;#10;state = &quot;null&quot;" valType="extendedCode"/>
+        <Param name="Begin Routine" updates="constant" val="AvatarDrive_x = Avatar_x&amp;#10;AvatarDrive_y = Avatar_y&amp;#10;&amp;#10;# put mouse to arrow part &amp;#10;DrivingMouse.setPos(newPos =(0, Arrow_y[2]))&amp;#10;&amp;#10;# frame counter &amp;#10;frame = 0&amp;#10;&amp;#10;state = &quot;null&quot;&amp;#10;&amp;#10;# set colours for arrows &amp;#10;up_col    = Arrow_init_colour&amp;#10;down_col  = Arrow_init_colour&amp;#10;left_col  = Arrow_init_colour&amp;#10;right_col = Arrow_init_colour" valType="extendedCode"/>
         <Param name="Code Type" updates="None" val="Py" valType="str"/>
-        <Param name="Each Frame" updates="constant" val="# add to frame count and check whether to change colour&amp;#10;frame += 1&amp;#10;if frame &gt;= delay:&amp;#10;    if target == &quot;left&quot;:&amp;#10;        left_colour = box_burning&amp;#10;    elif target == &quot;right&quot;:&amp;#10;        right_colour = box_burning&amp;#10;&amp;#10;&amp;#10;key_pressed = DrivingKeys.keys&amp;#10;# status just checks if we're listening to the keyboard&amp;#10;state = 1&amp;#10;&amp;#10;# try driving with the mouse &amp;#10;if DrivingMouse.isPressedIn(upShape):&amp;#10;    AvatarDrive_y += avatar_speed&amp;#10;elif DrivingMouse.isPressedIn(downShape):&amp;#10;    AvatarDrive_y -= avatar_speed&amp;#10;elif DrivingMouse.isPressedIn(rightShape):&amp;#10;    AvatarDrive_x += avatar_speed&amp;#10;elif DrivingMouse.isPressedIn(leftShape):&amp;#10;    AvatarDrive_x -= avatar_speed&amp;#10;&amp;#10;# Works by allowing people to set the direction of travel and the&amp;#10;# avatar will drive in that direction until another key is pressed &amp;#10;# NB: needs to only store the last key press&amp;#10;#if key_pressed == 'up': &amp;#10;#    AvatarDrive_y += avatar_speed&amp;#10;#elif key_pressed == 'down':&amp;#10;#    AvatarDrive_y -= avatar_speed&amp;#10;#elif key_pressed == 'right':&amp;#10;#    AvatarDrive_x += avatar_speed&amp;#10;#elif key_pressed == 'left':&amp;#10;#    AvatarDrive_x -= avatar_speed&amp;#10;&amp;#10;# This works if we want to make participants tap their keyboard&amp;#10;# NB: must be paired with storing all keys&amp;#10;#if len(key_pressed) &gt; 0:&amp;#10;#    if key_pressed[-1] == 'up': &amp;#10;#        AvatarDrive_y += avatar_speed&amp;#10;#        key_pressed.pop()&amp;#10;#    elif key_pressed[-1] == 'down':&amp;#10;#        AvatarDrive_y -= avatar_speed&amp;#10;#        DrivingKeys.keys.pop()&amp;#10;#    elif key_pressed[-1] == 'right':&amp;#10;#        AvatarDrive_x += avatar_speed&amp;#10;#        DrivingKeys.keys.pop()&amp;#10;#    elif key_pressed[-1] == 'left':&amp;#10;#        AvatarDrive_x -= avatar_speed&amp;#10;#        DrivingKeys.keys.pop()&amp;#10;&amp;#10;" valType="extendedCode"/>
+        <Param name="Each Frame" updates="constant" val="# add to frame count and check whether to change colour&amp;#10;frame += 1&amp;#10;&amp;#10;# keep mouse in place until trial starts&amp;#10;if frame &lt; delay:&amp;#10;    DrivingMouse.setPos(newPos =(0, Arrow_y[2]))&amp;#10;    &amp;#10;# Don't draw the target early&amp;#10;if frame &gt;= delay:&amp;#10;    if target == &quot;left&quot;:&amp;#10;        left_colour = box_burning&amp;#10;    elif target == &quot;right&quot;:&amp;#10;        right_colour = box_burning&amp;#10;&amp;#10;# Probably don't need this now since keys aren't great&amp;#10;key_pressed = DrivingKeys.keys&amp;#10;# status just checks if we're listening to the keyboard&amp;#10;state = 1&amp;#10;&amp;#10;# use the mouse to drive the avatar&amp;#10;if DrivingMouse.isPressedIn(upClick):&amp;#10;    AvatarDrive_y += avatar_speed&amp;#10;    up_col = Arrow_clik_colour&amp;#10;elif DrivingMouse.isPressedIn(downClick):&amp;#10;    AvatarDrive_y -= avatar_speed&amp;#10;    down_col = Arrow_clik_colour&amp;#10;elif DrivingMouse.isPressedIn(rightClick):&amp;#10;    AvatarDrive_x += avatar_speed&amp;#10;    right_col = Arrow_clik_colour&amp;#10;elif DrivingMouse.isPressedIn(leftClick):&amp;#10;    AvatarDrive_x -= avatar_speed&amp;#10;    left_col = Arrow_clik_colour&amp;#10;else:&amp;#10;    # reset the colours if nothing is clicked&amp;#10;    up_col    = Arrow_init_colour&amp;#10;    down_col  = Arrow_init_colour&amp;#10;    left_col  = Arrow_init_colour&amp;#10;    right_col = Arrow_init_colour&amp;#10;&amp;#10;# Works by allowing people to set the direction of travel and the&amp;#10;# avatar will drive in that direction until another key is pressed &amp;#10;# NB: needs to only store the last key press&amp;#10;#if key_pressed == 'up': &amp;#10;#    AvatarDrive_y += avatar_speed&amp;#10;#elif key_pressed == 'down':&amp;#10;#    AvatarDrive_y -= avatar_speed&amp;#10;#elif key_pressed == 'right':&amp;#10;#    AvatarDrive_x += avatar_speed&amp;#10;#elif key_pressed == 'left':&amp;#10;#    AvatarDrive_x -= avatar_speed&amp;#10;&amp;#10;# This works if we want to make participants tap their keyboard&amp;#10;# NB: must be paired with storing all keys&amp;#10;#if len(key_pressed) &gt; 0:&amp;#10;#    if key_pressed[-1] == 'up': &amp;#10;#        AvatarDrive_y += avatar_speed&amp;#10;#        key_pressed.pop()&amp;#10;#    elif key_pressed[-1] == 'down':&amp;#10;#        AvatarDrive_y -= avatar_speed&amp;#10;#        DrivingKeys.keys.pop()&amp;#10;#    elif key_pressed[-1] == 'right':&amp;#10;#        AvatarDrive_x += avatar_speed&amp;#10;#        DrivingKeys.keys.pop()&amp;#10;#    elif key_pressed[-1] == 'left':&amp;#10;#        AvatarDrive_x -= avatar_speed&amp;#10;#        DrivingKeys.keys.pop()&amp;#10;&amp;#10;" valType="extendedCode"/>
         <Param name="Each JS Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
         <Param name="End JS Experiment" updates="constant" val="" valType="extendedCode"/>
@@ -595,13 +595,113 @@
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="code"/>
       </TextComponent>
-      <PolygonComponent name="upShape">
+      <PolygonComponent name="upClick">
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="fillColor" updates="set every frame" val="$[1,1,1]" valType="str"/>
+        <Param name="fillColorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="lineColor" updates="set every frame" val="$[-1,-1,-1]" valType="str"/>
+        <Param name="lineColorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="lineWidth" updates="constant" val="1" valType="code"/>
+        <Param name="nVertices" updates="constant" val="4" valType="int"/>
+        <Param name="name" updates="None" val="upClick" valType="code"/>
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="ori" updates="set every frame" val="Arrow_orient[0]" valType="code"/>
+        <Param name="pos" updates="set every frame" val="(Arrow_x[0], Arrow_y[0])" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="shape" updates="constant" val="rectangle" valType="str"/>
+        <Param name="size" updates="set every frame" val="(Arrow_size, Arrow_size)" valType="code"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="frame N" valType="str"/>
+        <Param name="startVal" updates="None" val="0" valType="code"/>
+        <Param name="stopType" updates="None" val="frame N" valType="str"/>
+        <Param name="stopVal" updates="constant" val="$Trial_time + delay" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+      </PolygonComponent>
+      <PolygonComponent name="downClick">
         <Param name="disabled" updates="None" val="False" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="fillColor" updates="constant" val="$[1,1,1]" valType="str"/>
         <Param name="fillColorSpace" updates="constant" val="rgb" valType="str"/>
         <Param name="interpolate" updates="constant" val="linear" valType="str"/>
-        <Param name="lineColor" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="lineColor" updates="constant" val="$[-1,-1,-1]" valType="str"/>
+        <Param name="lineColorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="lineWidth" updates="constant" val="1" valType="code"/>
+        <Param name="nVertices" updates="constant" val="4" valType="int"/>
+        <Param name="name" updates="None" val="downClick" valType="code"/>
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="ori" updates="set every frame" val="Arrow_orient[1]" valType="code"/>
+        <Param name="pos" updates="set every frame" val="(Arrow_x[1], Arrow_y[1])" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="shape" updates="constant" val="rectangle" valType="str"/>
+        <Param name="size" updates="set every frame" val="(Arrow_size, Arrow_size)" valType="code"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="frame N" valType="str"/>
+        <Param name="stopVal" updates="constant" val="$Trial_time + delay" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+      </PolygonComponent>
+      <PolygonComponent name="leftClick">
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="fillColor" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="fillColorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="lineColor" updates="constant" val="$[-1,-1,-1]" valType="str"/>
+        <Param name="lineColorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="lineWidth" updates="constant" val="1" valType="code"/>
+        <Param name="nVertices" updates="constant" val="4" valType="int"/>
+        <Param name="name" updates="None" val="leftClick" valType="code"/>
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="ori" updates="set every frame" val="Arrow_orient[2]" valType="code"/>
+        <Param name="pos" updates="set every frame" val="(Arrow_x[2], Arrow_y[2])" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="shape" updates="constant" val="rectangle" valType="str"/>
+        <Param name="size" updates="set every frame" val="(Arrow_size, Arrow_size)" valType="code"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="frame N" valType="str"/>
+        <Param name="stopVal" updates="constant" val="$Trial_time + delay" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+      </PolygonComponent>
+      <PolygonComponent name="rightClick">
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="fillColor" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="fillColorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="lineColor" updates="constant" val="$[-1,-1,-1]" valType="str"/>
+        <Param name="lineColorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="lineWidth" updates="constant" val="1" valType="code"/>
+        <Param name="nVertices" updates="constant" val="4" valType="int"/>
+        <Param name="name" updates="None" val="rightClick" valType="code"/>
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="ori" updates="set every frame" val="0" valType="code"/>
+        <Param name="pos" updates="set every frame" val="(Arrow_x[3], Arrow_y[3])" valType="code"/>
+        <Param name="saveStartStop" updates="None" val="True" valType="bool"/>
+        <Param name="shape" updates="constant" val="rectangle" valType="str"/>
+        <Param name="size" updates="set every frame" val="(Arrow_size, Arrow_size)" valType="code"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="stopType" updates="None" val="frame N" valType="str"/>
+        <Param name="stopVal" updates="constant" val="$Trial_time + delay" valType="code"/>
+        <Param name="syncScreenRefresh" updates="None" val="True" valType="bool"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+      </PolygonComponent>
+      <PolygonComponent name="upShape">
+        <Param name="disabled" updates="None" val="False" valType="bool"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="fillColor" updates="set every frame" val="$up_col" valType="str"/>
+        <Param name="fillColorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="interpolate" updates="constant" val="linear" valType="str"/>
+        <Param name="lineColor" updates="set every frame" val="$[-1,-1,-1]" valType="str"/>
         <Param name="lineColorSpace" updates="constant" val="rgb" valType="str"/>
         <Param name="lineWidth" updates="constant" val="1" valType="code"/>
         <Param name="nVertices" updates="constant" val="4" valType="int"/>
@@ -623,10 +723,10 @@
       <PolygonComponent name="downShape">
         <Param name="disabled" updates="None" val="False" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
-        <Param name="fillColor" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="fillColor" updates="set every frame" val="$down_col" valType="str"/>
         <Param name="fillColorSpace" updates="constant" val="rgb" valType="str"/>
         <Param name="interpolate" updates="constant" val="linear" valType="str"/>
-        <Param name="lineColor" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="lineColor" updates="set every frame" val="$[-1,-1,-1]" valType="str"/>
         <Param name="lineColorSpace" updates="constant" val="rgb" valType="str"/>
         <Param name="lineWidth" updates="constant" val="1" valType="code"/>
         <Param name="nVertices" updates="constant" val="4" valType="int"/>
@@ -648,10 +748,10 @@
       <PolygonComponent name="rightShape">
         <Param name="disabled" updates="None" val="False" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
-        <Param name="fillColor" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="fillColor" updates="set every frame" val="$right_col" valType="str"/>
         <Param name="fillColorSpace" updates="constant" val="rgb" valType="str"/>
         <Param name="interpolate" updates="constant" val="linear" valType="str"/>
-        <Param name="lineColor" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="lineColor" updates="set every frame" val="$[-1,-1,-1]" valType="str"/>
         <Param name="lineColorSpace" updates="constant" val="rgb" valType="str"/>
         <Param name="lineWidth" updates="constant" val="1" valType="code"/>
         <Param name="nVertices" updates="constant" val="4" valType="int"/>
@@ -673,10 +773,10 @@
       <PolygonComponent name="leftShape">
         <Param name="disabled" updates="None" val="False" valType="bool"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
-        <Param name="fillColor" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="fillColor" updates="set every frame" val="$left_col" valType="str"/>
         <Param name="fillColorSpace" updates="constant" val="rgb" valType="str"/>
         <Param name="interpolate" updates="constant" val="linear" valType="str"/>
-        <Param name="lineColor" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="lineColor" updates="set every frame" val="$[-1,-1,-1]" valType="str"/>
         <Param name="lineColorSpace" updates="constant" val="rgb" valType="str"/>
         <Param name="lineWidth" updates="constant" val="1" valType="code"/>
         <Param name="nVertices" updates="constant" val="4" valType="int"/>

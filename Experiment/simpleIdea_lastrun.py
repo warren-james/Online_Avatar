@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v3.1.2),
-    on April 13, 2020, at 16:59
+    on April 14, 2020, at 10:39
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -99,6 +99,8 @@ box_burning = [.64, -.17, -.76]
 box_burnt   = [-.9, -.9, -.9]
 
 # Control Arrows
+Arrow_init_colour = [1,1,1]
+Arrow_clik_colour = [0,0,1]
 Arrow_size = 30
 Arrow_orient = [0,180,270,90]
 Arrow_y = [-150,-220,-185,-185]
@@ -240,34 +242,62 @@ TestCheck = visual.TextStim(win=win, name='TestCheck',
     color='white', colorSpace='rgb', opacity=1, 
     languageStyle='LTR',
     depth=-10.0);
+upClick = visual.Rect(
+    win=win, name='upClick',
+    width=[1.0, 1.0][0], height=[1.0, 1.0][1],
+    ori=1.0, pos=[0,0],
+    lineWidth=1, lineColor=1.0, lineColorSpace='rgb',
+    fillColor=1.0, fillColorSpace='rgb',
+    opacity=1, depth=-11.0, interpolate=True)
+downClick = visual.Rect(
+    win=win, name='downClick',
+    width=[1.0, 1.0][0], height=[1.0, 1.0][1],
+    ori=1.0, pos=[0,0],
+    lineWidth=1, lineColor=[-1,-1,-1], lineColorSpace='rgb',
+    fillColor=[1,1,1], fillColorSpace='rgb',
+    opacity=1, depth=-12.0, interpolate=True)
+leftClick = visual.Rect(
+    win=win, name='leftClick',
+    width=[1.0, 1.0][0], height=[1.0, 1.0][1],
+    ori=1.0, pos=[0,0],
+    lineWidth=1, lineColor=[-1,-1,-1], lineColorSpace='rgb',
+    fillColor=[1,1,1], fillColorSpace='rgb',
+    opacity=1, depth=-13.0, interpolate=True)
+rightClick = visual.Rect(
+    win=win, name='rightClick',
+    width=[1.0, 1.0][0], height=[1.0, 1.0][1],
+    ori=1.0, pos=[0,0],
+    lineWidth=1, lineColor=[-1,-1,-1], lineColorSpace='rgb',
+    fillColor=[1,1,1], fillColorSpace='rgb',
+    opacity=1, depth=-14.0, interpolate=True)
 upShape = visual.ShapeStim(
     win=win, name='upShape',
     vertices=[[-[1.0, 1.0][0]/2.0,-[1.0, 1.0][1]/2.0], [+[1.0, 1.0][0]/2.0,-[1.0, 1.0][1]/2.0], [0,[1.0, 1.0][1]/2.0]],
     ori=1.0, pos=[0,0],
-    lineWidth=1, lineColor=[1,1,1], lineColorSpace='rgb',
-    fillColor=[1,1,1], fillColorSpace='rgb',
-    opacity=1, depth=-11.0, interpolate=True)
+    lineWidth=1, lineColor=1.0, lineColorSpace='rgb',
+    fillColor=1.0, fillColorSpace='rgb',
+    opacity=1, depth=-15.0, interpolate=True)
 downShape = visual.ShapeStim(
     win=win, name='downShape',
     vertices=[[-[1.0, 1.0][0]/2.0,-[1.0, 1.0][1]/2.0], [+[1.0, 1.0][0]/2.0,-[1.0, 1.0][1]/2.0], [0,[1.0, 1.0][1]/2.0]],
     ori=1.0, pos=[0,0],
-    lineWidth=1, lineColor=[1,1,1], lineColorSpace='rgb',
-    fillColor=[1,1,1], fillColorSpace='rgb',
-    opacity=1, depth=-12.0, interpolate=True)
+    lineWidth=1, lineColor=1.0, lineColorSpace='rgb',
+    fillColor=1.0, fillColorSpace='rgb',
+    opacity=1, depth=-16.0, interpolate=True)
 rightShape = visual.ShapeStim(
     win=win, name='rightShape',
     vertices=[[-[1.0, 1.0][0]/2.0,-[1.0, 1.0][1]/2.0], [+[1.0, 1.0][0]/2.0,-[1.0, 1.0][1]/2.0], [0,[1.0, 1.0][1]/2.0]],
     ori=1.0, pos=[0,0],
-    lineWidth=1, lineColor=[1,1,1], lineColorSpace='rgb',
-    fillColor=[1,1,1], fillColorSpace='rgb',
-    opacity=1, depth=-13.0, interpolate=True)
+    lineWidth=1, lineColor=1.0, lineColorSpace='rgb',
+    fillColor=1.0, fillColorSpace='rgb',
+    opacity=1, depth=-17.0, interpolate=True)
 leftShape = visual.ShapeStim(
     win=win, name='leftShape',
     vertices=[[-[1.0, 1.0][0]/2.0,-[1.0, 1.0][1]/2.0], [+[1.0, 1.0][0]/2.0,-[1.0, 1.0][1]/2.0], [0,[1.0, 1.0][1]/2.0]],
     ori=1.0, pos=[0,0],
-    lineWidth=1, lineColor=[1,1,1], lineColorSpace='rgb',
-    fillColor=[1,1,1], fillColorSpace='rgb',
-    opacity=1, depth=-14.0, interpolate=True)
+    lineWidth=1, lineColor=1.0, lineColorSpace='rgb',
+    fillColor=1.0, fillColorSpace='rgb',
+    opacity=1, depth=-18.0, interpolate=True)
 
 # Create some handy timers
 globalClock = core.Clock()  # to track the time since experiment started
@@ -834,9 +864,10 @@ for thisBlockLoop in BlockLoop:
                 AvatarPlace.setFillColor(box_truck, log=False)
                 AvatarPlace.setLineColor(box_truck, log=False)
             # check for mouse click
-            if AvatarMouse.getPressed()[0]:
-                Avatar_x = AvatarMouse.getPos()[0]
-                Avatar_y = 100
+            if AvatarMouse.getPos()[1] > 100 - (box_size/2) and AvatarMouse.getPos()[1] < 100 + (box_size/2):
+                if AvatarMouse.getPressed()[0]:
+                    Avatar_x = AvatarMouse.getPos()[0]
+                    Avatar_y = 100
             
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -913,8 +944,14 @@ for thisBlockLoop in BlockLoop:
         frame = 0
         
         state = "null"
+        
+        # set colours for arrows 
+        up_col    = Arrow_init_colour
+        down_col  = Arrow_init_colour
+        left_col  = Arrow_init_colour
+        right_col = Arrow_init_colour
         # keep track of which components have finished
-        routine_5c_DrivingAvatarComponents = [DrivingMouse, DrivingKeys, text, text_2, DrivingBoundary, AvatarPlaced, AvatarDrive, LeftBuild, RightBuild, TestCheck, upShape, downShape, rightShape, leftShape]
+        routine_5c_DrivingAvatarComponents = [DrivingMouse, DrivingKeys, text, text_2, DrivingBoundary, AvatarPlaced, AvatarDrive, LeftBuild, RightBuild, TestCheck, upClick, downClick, leftClick, rightClick, upShape, downShape, rightShape, leftShape]
         for thisComponent in routine_5c_DrivingAvatarComponents:
             thisComponent.tStart = None
             thisComponent.tStop = None
@@ -1026,26 +1063,42 @@ for thisBlockLoop in BlockLoop:
                 DrivingBoundary.setSize((Screen_width, box_size + 10), log=False)
             # add to frame count and check whether to change colour
             frame += 1
+            
+            # keep mouse in place until trial starts
+            if frame < delay:
+                DrivingMouse.setPos(newPos =(0, Arrow_y[2]))
+                
+            # Don't draw the target early
             if frame >= delay:
                 if target == "left":
                     left_colour = box_burning
                 elif target == "right":
                     right_colour = box_burning
             
-            
+            # Probably don't need this now since keys aren't great
             key_pressed = DrivingKeys.keys
             # status just checks if we're listening to the keyboard
             state = 1
             
-            # try driving with the mouse 
-            if DrivingMouse.isPressedIn(upShape):
+            # use the mouse to drive the avatar
+            if DrivingMouse.isPressedIn(upClick):
                 AvatarDrive_y += avatar_speed
-            elif DrivingMouse.isPressedIn(downShape):
+                up_col = Arrow_clik_colour
+            elif DrivingMouse.isPressedIn(downClick):
                 AvatarDrive_y -= avatar_speed
-            elif DrivingMouse.isPressedIn(rightShape):
+                down_col = Arrow_clik_colour
+            elif DrivingMouse.isPressedIn(rightClick):
                 AvatarDrive_x += avatar_speed
-            elif DrivingMouse.isPressedIn(leftShape):
+                right_col = Arrow_clik_colour
+            elif DrivingMouse.isPressedIn(leftClick):
                 AvatarDrive_x -= avatar_speed
+                left_col = Arrow_clik_colour
+            else:
+                # reset the colours if nothing is clicked
+                up_col    = Arrow_init_colour
+                down_col  = Arrow_init_colour
+                left_col  = Arrow_init_colour
+                right_col = Arrow_init_colour
             
             # Works by allowing people to set the direction of travel and the
             # avatar will drive in that direction until another key is pressed 
@@ -1170,6 +1223,80 @@ for thisBlockLoop in BlockLoop:
                 TestCheck.setText(state
 , log=False)
             
+            # *upClick* updates
+            if frameN >= 0 and upClick.status == NOT_STARTED:
+                # keep track of start time/frame for later
+                upClick.tStart = t  # not accounting for scr refresh
+                upClick.frameNStart = frameN  # exact frame index
+                win.timeOnFlip(upClick, 'tStartRefresh')  # time at next scr refresh
+                upClick.setAutoDraw(True)
+            if upClick.status == STARTED and frameN >= Trial_time + delay:
+                # keep track of stop time/frame for later
+                upClick.tStop = t  # not accounting for scr refresh
+                upClick.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(upClick, 'tStopRefresh')  # time at next scr refresh
+                upClick.setAutoDraw(False)
+            if upClick.status == STARTED:  # only update if drawing
+                upClick.setPos((Arrow_x[0], Arrow_y[0]), log=False)
+                upClick.setSize((Arrow_size, Arrow_size), log=False)
+                upClick.setOri(Arrow_orient[0], log=False)
+                upClick.setFillColor([1,1,1], log=False)
+                upClick.setLineColor([-1,-1,-1], log=False)
+            
+            # *downClick* updates
+            if t >= 0.0 and downClick.status == NOT_STARTED:
+                # keep track of start time/frame for later
+                downClick.tStart = t  # not accounting for scr refresh
+                downClick.frameNStart = frameN  # exact frame index
+                win.timeOnFlip(downClick, 'tStartRefresh')  # time at next scr refresh
+                downClick.setAutoDraw(True)
+            if downClick.status == STARTED and frameN >= Trial_time + delay:
+                # keep track of stop time/frame for later
+                downClick.tStop = t  # not accounting for scr refresh
+                downClick.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(downClick, 'tStopRefresh')  # time at next scr refresh
+                downClick.setAutoDraw(False)
+            if downClick.status == STARTED:  # only update if drawing
+                downClick.setPos((Arrow_x[1], Arrow_y[1]), log=False)
+                downClick.setSize((Arrow_size, Arrow_size), log=False)
+                downClick.setOri(Arrow_orient[1], log=False)
+            
+            # *leftClick* updates
+            if t >= 0.0 and leftClick.status == NOT_STARTED:
+                # keep track of start time/frame for later
+                leftClick.tStart = t  # not accounting for scr refresh
+                leftClick.frameNStart = frameN  # exact frame index
+                win.timeOnFlip(leftClick, 'tStartRefresh')  # time at next scr refresh
+                leftClick.setAutoDraw(True)
+            if leftClick.status == STARTED and frameN >= Trial_time + delay:
+                # keep track of stop time/frame for later
+                leftClick.tStop = t  # not accounting for scr refresh
+                leftClick.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(leftClick, 'tStopRefresh')  # time at next scr refresh
+                leftClick.setAutoDraw(False)
+            if leftClick.status == STARTED:  # only update if drawing
+                leftClick.setPos((Arrow_x[2], Arrow_y[2]), log=False)
+                leftClick.setSize((Arrow_size, Arrow_size), log=False)
+                leftClick.setOri(Arrow_orient[2], log=False)
+            
+            # *rightClick* updates
+            if t >= 0.0 and rightClick.status == NOT_STARTED:
+                # keep track of start time/frame for later
+                rightClick.tStart = t  # not accounting for scr refresh
+                rightClick.frameNStart = frameN  # exact frame index
+                win.timeOnFlip(rightClick, 'tStartRefresh')  # time at next scr refresh
+                rightClick.setAutoDraw(True)
+            if rightClick.status == STARTED and frameN >= Trial_time + delay:
+                # keep track of stop time/frame for later
+                rightClick.tStop = t  # not accounting for scr refresh
+                rightClick.frameNStop = frameN  # exact frame index
+                win.timeOnFlip(rightClick, 'tStopRefresh')  # time at next scr refresh
+                rightClick.setAutoDraw(False)
+            if rightClick.status == STARTED:  # only update if drawing
+                rightClick.setPos((Arrow_x[3], Arrow_y[3]), log=False)
+                rightClick.setSize((Arrow_size, Arrow_size), log=False)
+                rightClick.setOri(0, log=False)
+            
             # *upShape* updates
             if t >= 0.0 and upShape.status == NOT_STARTED:
                 # keep track of start time/frame for later
@@ -1187,6 +1314,8 @@ for thisBlockLoop in BlockLoop:
                 upShape.setPos((Arrow_x[0], Arrow_y[0]), log=False)
                 upShape.setSize((Arrow_size, Arrow_size), log=False)
                 upShape.setOri(Arrow_orient[0], log=False)
+                upShape.setFillColor(up_col, log=False)
+                upShape.setLineColor([-1,-1,-1], log=False)
             
             # *downShape* updates
             if t >= 0.0 and downShape.status == NOT_STARTED:
@@ -1205,6 +1334,8 @@ for thisBlockLoop in BlockLoop:
                 downShape.setPos((Arrow_x[1], Arrow_y[1]), log=False)
                 downShape.setSize((Arrow_size, Arrow_size), log=False)
                 downShape.setOri(Arrow_orient[1], log=False)
+                downShape.setFillColor(down_col, log=False)
+                downShape.setLineColor([-1,-1,-1], log=False)
             
             # *rightShape* updates
             if t >= 0.0 and rightShape.status == NOT_STARTED:
@@ -1223,6 +1354,8 @@ for thisBlockLoop in BlockLoop:
                 rightShape.setPos((Arrow_x[3], Arrow_y[3]), log=False)
                 rightShape.setSize((Arrow_size, Arrow_size), log=False)
                 rightShape.setOri(Arrow_orient[3], log=False)
+                rightShape.setFillColor(right_col, log=False)
+                rightShape.setLineColor([-1,-1,-1], log=False)
             
             # *leftShape* updates
             if t >= 0.0 and leftShape.status == NOT_STARTED:
@@ -1241,6 +1374,8 @@ for thisBlockLoop in BlockLoop:
                 leftShape.setPos((Arrow_x[2], Arrow_y[2]), log=False)
                 leftShape.setSize((Arrow_size, Arrow_size), log=False)
                 leftShape.setOri(Arrow_orient[2], log=False)
+                leftShape.setFillColor(left_col, log=False)
+                leftShape.setLineColor([-1,-1,-1], log=False)
             
             # check for quit (typically the Esc key)
             if endExpNow or defaultKeyboard.getKeys(keyList=["escape"]):
@@ -1306,6 +1441,14 @@ for thisBlockLoop in BlockLoop:
         DecisionTrialLoop.addData('RightBuild.stopped', RightBuild.tStopRefresh)
         DecisionTrialLoop.addData('TestCheck.started', TestCheck.tStartRefresh)
         DecisionTrialLoop.addData('TestCheck.stopped', TestCheck.tStopRefresh)
+        DecisionTrialLoop.addData('upClick.started', upClick.tStartRefresh)
+        DecisionTrialLoop.addData('upClick.stopped', upClick.tStopRefresh)
+        DecisionTrialLoop.addData('downClick.started', downClick.tStartRefresh)
+        DecisionTrialLoop.addData('downClick.stopped', downClick.tStopRefresh)
+        DecisionTrialLoop.addData('leftClick.started', leftClick.tStartRefresh)
+        DecisionTrialLoop.addData('leftClick.stopped', leftClick.tStopRefresh)
+        DecisionTrialLoop.addData('rightClick.started', rightClick.tStartRefresh)
+        DecisionTrialLoop.addData('rightClick.stopped', rightClick.tStopRefresh)
         DecisionTrialLoop.addData('upShape.started', upShape.tStartRefresh)
         DecisionTrialLoop.addData('upShape.stopped', upShape.tStopRefresh)
         DecisionTrialLoop.addData('downShape.started', downShape.tStartRefresh)
